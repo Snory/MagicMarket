@@ -5,10 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public interface IPersistableRepository
+public interface ICreatableEntry
 {
-    public void Persist();
-    public void Initialize();
-
     public void CreateEntry();
 }

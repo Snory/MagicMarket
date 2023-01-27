@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class ItemJsonConverter : JsonConverter
+public class ItemDataJsonConverter : JsonConverter
 {
     public override bool CanConvert(Type objectType)
     {
-        return objectType == typeof(Item);
+        return objectType == typeof(ItemData);
     }
 
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-        // deserialize the JSON into an Item object
+        // deserialize the JSON into an ItemData object
         JObject item = JObject.Load(reader);
-        Item result = new Item
+        ItemData result = new ItemData
         {
             Identification = (string)item["Identification"],
             Name = (string)item["Name"],
@@ -25,12 +25,12 @@ public class ItemJsonConverter : JsonConverter
             ProductionTimeSeconds = (float)item["ProductionTimeSeconds"],
             ProductionExperience = (float)item["ProductionExperience"],
             Type = (ItemType)Enum.Parse(typeof(ItemType), (string)item["Type"]),
-            ItemRarityProbabilities = ((JArray)item["ItemProbabilities"]).Select(p => new ItemRarityProbability
+            ItemRarityProbabilities = ((JArray)item["ItemRarityProbabilities"]).Select(p => new ItemRarityProbability
             {
                 Rarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)p["Rarity"]),
                 Probability = (float)p["Probability"]
             }).ToList(),
-            ItemQualityProbabilities = ((JArray)item["ItemProbabilities"]).Select(p => new ItemQualityProbability
+            ItemQualityProbabilities = ((JArray)item["ItemQualityProbabilities"]).Select(p => new ItemQualityProbability
             {
                 Quality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)p["Quality"]),
                 Probability = (float)p["Probability"]
@@ -42,8 +42,8 @@ public class ItemJsonConverter : JsonConverter
 
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-        // serialize the Item object into JSON
-        Item item = (Item)value;
+        // serialize the ItemData object into JSON
+        ItemData item = (ItemData)value;
         JObject itemJson = new JObject
         {
             {"Identification", item.Identification},

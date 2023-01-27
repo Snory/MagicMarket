@@ -11,19 +11,22 @@ public class RepositoryEditor : Editor
     {
         base.OnInspectorGUI();
 
-        var repository = target as IPersistableRepository;
+        GUILayout.Label("Common repository");
+        var creatable = target as ICreatableEntry;
 
         if (GUILayout.Button("Add entry"))
         {
-            repository.CreateEntry();
+            creatable.CreateEntry();
         }
+        
+        var persistable = target as IPersistable;
         if (GUILayout.Button("Initialize repository"))
         {
-            repository.Initialize();
+            persistable.Initialize();
         }
         if (GUILayout.Button("Persist repository"))
         {
-            repository.Persist();
+            persistable.Persist();
         }
     }
 }

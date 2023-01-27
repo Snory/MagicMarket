@@ -8,6 +8,7 @@ using UnityEngine;
 public class GeneralEvent : ScriptableObject
 {
 
+    [SerializeField]
     protected List<GeneralEventListener> listeners =
         new List<GeneralEventListener>();
 
