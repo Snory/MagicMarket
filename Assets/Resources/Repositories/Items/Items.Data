@@ -1,0 +1,42 @@
+[
+  {
+    "Identification": "7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a",
+    "Name": "RobinovaNoha",
+    "Description": "",
+    "ProductionTimeSeconds": 0.0,
+    "ProductionExperience": 0.0,
+    "Type": "PRIMARY",
+    "ItemRarityProbabilities": [],
+    "ItemQualityProbabilities": []
+  },
+  {
+    "Identification": "9e122a8b-35d3-48f2-95f8-a616327c83a7",
+    "Name": "BarciNoha",
+    "Description": "",
+    "ProductionTimeSeconds": 0.0,
+    "ProductionExperience": 0.0,
+    "Type": "PRIMARY",
+    "ItemRarityProbabilities": [],
+    "ItemQualityProbabilities": []
+  },
+  {
+    "Identification": "ae8a3258-b974-418c-8a4d-b0e115e4d83e",
+    "Name": "VyvarZNoh",
+    "Description": "",
+    "ProductionTimeSeconds": 0.0,
+    "ProductionExperience": 0.0,
+    "Type": "CRAFTED",
+    "ItemRarityProbabilities": [],
+    "ItemQualityProbabilities": []
+  },
+  {
+    "Identification": "e640a40f-e420-4bd6-a22f-f7756580a316",
+    "Name": "FrakensteinovaNoha",
+    "Description": "",
+    "ProductionTimeSeconds": 0.0,
+    "ProductionExperience": 0.0,
+    "Type": "CRAFTED",
+    "ItemRarityProbabilities": [],
+    "ItemQualityProbabilities": []
+  }
+]
