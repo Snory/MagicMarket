@@ -19,6 +19,8 @@ public abstract class FileRepository<T> : Repository<T> where T: Identity
     private string[] _repositoryFolderPath;
     [SerializeField] 
     private string _repositoryFileName;
+    [SerializeField]
+    protected RepositoryType _repositoryType;
 
     private void OnValidate()
     {
@@ -97,5 +99,4 @@ public abstract class FileRepository<T> : Repository<T> where T: Identity
             }
         }
     }
-
 }

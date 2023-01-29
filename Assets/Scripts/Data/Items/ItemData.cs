@@ -11,7 +11,6 @@ public enum ItemType { CRAFTED, PRIMARY}
 [JsonConverter(typeof(ItemDataJsonConverter))]
 public class ItemData : Identity
 {
-
     public string Name;
     public string Description;
     public ItemType Type;
@@ -19,7 +18,6 @@ public class ItemData : Identity
     public float ProductionExperience;
     public List<ItemRarityProbability> ItemRarityProbabilities;
     public List<ItemQualityProbability> ItemQualityProbabilities;
-
 
 }
 

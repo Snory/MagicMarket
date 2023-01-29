@@ -10,7 +10,5 @@ using UnityEngine;
 [JsonConverter(typeof(GameplayDataJsonConverter))]
 public class GameplayData : Identity
 {
-    public GameData GameData;
-    public List<Merchant> Merchants;
-    
+    public GameData GameData;  
 }

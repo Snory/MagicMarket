@@ -7,9 +7,6 @@ using UnityEngine;
 
 public abstract class Repository<T> : MonoBehaviour, IPersistable, ICreatableEntry where T : Identity
 {
-
-    [SerializeField]
-    protected RepositoryType _repositoryType;
     [SerializeField]
     protected List<T> _entries;
 
@@ -26,15 +23,6 @@ public abstract class Repository<T> : MonoBehaviour, IPersistable, ICreatableEnt
     public virtual T GetEntry(string identification)
     {
         return _entries.Where(t => t.Identification == identification).FirstOrDefault();
-    }
-
-
-    private void OnApplicationQuit()
-    {
-        if (_repositoryType == RepositoryType.GAMEPLAY)
-        {
-            Persist();
-        }
     }
 
     public abstract void CreateEntry();
