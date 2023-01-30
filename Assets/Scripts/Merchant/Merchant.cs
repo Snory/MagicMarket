@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 [Serializable]
-public class MerchantData : Identity
+public class Merchant 
 {
+    public MerchantData MerchantData;
+    public List<StockItem> StockItems;
 
-    public string Name;
-    public string Description;
 }
+

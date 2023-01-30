@@ -3,10 +3,57 @@
     "Identification": "7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a",
     "Name": "RobinovaNoha",
     "Description": "",
-    "ProductionTimeSeconds": 0.0,
-    "ProductionExperience": 0.0,
+    "SpriteName": "Carrot",
     "Type": "PRIMARY",
-    "ItemRarityProbabilities": [],
-    "ItemQualityProbabilities": []
+    "ItemRarityProbabilities": [
+      {
+        "Rarity": "LOW",
+        "Probability": 1.0
+      }
+    ],
+    "ItemQualityProbabilities": [
+      {
+        "Quality": "LOW",
+        "Probability": 1.0
+      }
+    ]
+  },
+  {
+    "Identification": "74b3203c-c3cd-4c28-b8fb-22a40634f192",
+    "Name": "BaryNohy",
+    "Description": "",
+    "SpriteName": "Garlic",
+    "Type": "PRIMARY",
+    "ItemRarityProbabilities": [
+      {
+        "Rarity": "LOW",
+        "Probability": 1.0
+      }
+    ],
+    "ItemQualityProbabilities": [
+      {
+        "Quality": "LOW",
+        "Probability": 1.0
+      }
+    ]
+  },
+  {
+    "Identification": "59bb3a33-98da-46bd-927b-c9d54038fabc",
+    "Name": "JeldovaNoha",
+    "Description": "",
+    "SpriteName": "Corn",
+    "Type": "PRIMARY",
+    "ItemRarityProbabilities": [
+      {
+        "Rarity": "LOW",
+        "Probability": 1.0
+      }
+    ],
+    "ItemQualityProbabilities": [
+      {
+        "Quality": "LOW",
+        "Probability": 1.0
+      }
+    ]
   }
 ]

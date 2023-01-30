@@ -22,9 +22,8 @@ public class ItemDataJsonConverter : JsonConverter
             Identification = (string)item["Identification"],
             Name = (string)item["Name"],
             Description = (string)item["Description"],
-            ProductionTimeSeconds = (float)item["ProductionTimeSeconds"],
-            ProductionExperience = (float)item["ProductionExperience"],
             Type = (ItemType)Enum.Parse(typeof(ItemType), (string)item["Type"]),
+            SpriteName = (string)item["SpriteName"],
             ItemRarityProbabilities = ((JArray)item["ItemRarityProbabilities"]).Select(p => new ItemRarityProbability
             {
                 Rarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)p["Rarity"]),
@@ -49,8 +48,7 @@ public class ItemDataJsonConverter : JsonConverter
             {"Identification", item.Identification},
             {"Name", item.Name},
             {"Description", item.Description},
-            {"ProductionTimeSeconds", item.ProductionTimeSeconds},
-            {"ProductionExperience", item.ProductionExperience},
+            {"SpriteName", item.SpriteName},
             {"Type", item.Type.ToString()},
             {"ItemRarityProbabilities", new JArray(item.ItemRarityProbabilities.Select(p => new JObject {{"Rarity", p.Rarity.ToString()}, {"Probability", p.Probability}}))},
             {"ItemQualityProbabilities", new JArray(item.ItemRarityProbabilities.Select(p => new JObject {{"Quality", p.Rarity.ToString()}, {"Probability", p.Probability}}))}

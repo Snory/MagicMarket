@@ -14,10 +14,9 @@ public class ItemData : Identity
     public string Name;
     public string Description;
     public ItemType Type;
-    public float ProductionTimeSeconds;
-    public float ProductionExperience;
     public List<ItemRarityProbability> ItemRarityProbabilities;
     public List<ItemQualityProbability> ItemQualityProbabilities;
+    public string SpriteName;
 
 }
 

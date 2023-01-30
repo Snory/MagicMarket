@@ -12,5 +12,7 @@ public enum ItemQuality
 public class ItemQualityProbability 
 {
     public ItemQuality Quality;
+
+    [Range(0,1)]
     public float Probability;
 }

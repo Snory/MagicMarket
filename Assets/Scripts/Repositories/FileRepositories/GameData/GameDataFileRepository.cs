@@ -9,6 +9,9 @@ public class GameDataFileRepository : FileRepository<GameData>
 {
     public override void CreateEntry()
     {
-        throw new NotImplementedException();
+        GameData gameData = new GameData();
+        gameData.Merchants = new List<Merchant>();
+        _entries.Add(gameData);
+
     }
 }
