@@ -344,7 +344,7 @@ MonoBehaviour:
         TotalPrice: 50
         ItemQuality: 0
         ItemRarity: 0
-  _gameDataLoaded: {fileID: 11400000, guid: bbe3d35b818aa694e8028ef5f965cbec, type: 2}
+  _gameDataSent: {fileID: 11400000, guid: bbe3d35b818aa694e8028ef5f965cbec, type: 2}
   GameDataRepository: {fileID: 1759768720}
   MerchantRepository: {fileID: 62810683}
   ItemRepository: {fileID: 697855612}

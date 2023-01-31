@@ -9,6 +9,8 @@ public class PlayerStockUI : MonoBehaviour
     public GameObject StockObject;
     public GameObject Content;
     public GameObject ContentItemPrefab;
+    public GameObject CloseButton;
+    public GameObject OpenButton;
     private Dictionary<string, Sprite> _sprites;
 
     private void Awake()
@@ -27,9 +29,13 @@ public class PlayerStockUI : MonoBehaviour
         if (StockObject.activeInHierarchy)
         {
             StockObject.SetActive(false);
+            OpenButton.SetActive(true);
+            CloseButton.SetActive(false);
         } else
         {
             StockObject.SetActive(true);
+            OpenButton.SetActive(false);
+            CloseButton.SetActive(true);
         }
     }
 

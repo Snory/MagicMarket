@@ -10,7 +10,7 @@ public class PlayerStock : MonoBehaviour
     private GameData _gameData;
     private List<StockItem> _playerStockItems;
 
-    public void OnGameDataLoaded(EventArgs args)
+    public void OnGameDataSent(EventArgs args)
     {
         GameDataEventArgs gameDataEventArgs = args as GameDataEventArgs;
         _playerStockItems = gameDataEventArgs.GameData.Player.StockItems;

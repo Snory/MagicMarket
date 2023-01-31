@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,17 +12,30 @@ public class GameManager : MonoBehaviour
     private GameData _gameData;
 
     [SerializeField]
-    private GeneralEvent _gameDataLoaded;
+    private GeneralEvent _gameDataSent;
 
     public Repository<GameData> GameDataRepository;
     public Repository<MerchantData> MerchantRepository;
     public Repository<ItemData> ItemRepository;
 
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(_gameDataSent != null)
+        {
+            _gameDataSent.Raise(new GameDataEventArgs(_gameData));
+        }
+    }
 
     [ContextMenu("Load game")]
     public void LoadGame()
     {
         SetGameData(GameDataRepository.GetEntry(_gameDataGuid));
+        SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
     }
 
     [ContextMenu("Save game")]
@@ -49,8 +63,6 @@ public class GameManager : MonoBehaviour
         {
             stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
         }
-
-        _gameDataLoaded.Raise(new GameDataEventArgs(_gameData));
     }
 
 
