@@ -171,12 +171,11 @@ MonoBehaviour:
   - Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
     Name: RobinTheWeaver
     Description: He came from the underworld to weave your shit!
-  - Identification: 7a58e8c1-371e-4d42-897a-868143831fa2
-    Name: XerxesTheMotherFucker
-    Description: He will fuck your mothers as your dads are dead
-  - Identification: 0ed9926c-2b75-4f59-bf32-77f9f7934ba1
-    Name: BaraTheQueen
-    Description: You are just a slave to her
+    SpriteName: merchant1
+  - Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
+    Name: BarboraTheQueen
+    Description: You are just a slave to me!
+    SpriteName: merchant2
   _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
   _repositoryFolderPath:
   - Resources
@@ -278,6 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840049307}
+  - component: {fileID: 840049308}
   - component: {fileID: 840049306}
   m_Layer: 0
   m_Name: GameManager
@@ -305,8 +305,9 @@ MonoBehaviour:
     Merchants:
     - MerchantData:
         Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-        Name: RobinTheWeaver
-        Description: He came from the underworld to weave your shit!
+        Name: XerxesTheMotherFucker
+        Description: He will fuck your mothers as your dads are dead
+        SpriteName: merchant2
       StockItems:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
@@ -319,10 +320,33 @@ MonoBehaviour:
           ItemQualityProbabilities:
           - Quality: 0
             Probability: 1
-          SpriteName: 
+          SpriteName: Garlic
         Amount: 10
         UnitPrice: 5
         TotalPrice: 50
+        ItemQuality: 0
+        ItemRarity: 0
+    - MerchantData:
+        Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
+        Name: RobinTheWeaver
+        Description: He came from the underworld to weave your shit!
+        SpriteName: merchant1
+      StockItems:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: RobinovaNoha
+          Description: 
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 1
+          SpriteName: Carrot
+        Amount: 15
+        UnitPrice: 5
+        TotalPrice: 75
         ItemQuality: 0
         ItemRarity: 0
     Player:
@@ -338,7 +362,7 @@ MonoBehaviour:
           ItemQualityProbabilities:
           - Quality: 0
             Probability: 1
-          SpriteName: 
+          SpriteName: Garlic
         Amount: 10
         UnitPrice: 5
         TotalPrice: 50
@@ -363,6 +387,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840049308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840049305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40ea0c3d50c10547b0d1ab76119991d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1189227514
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1189227516}
+  - component: {fileID: 1189227517}
   m_Layer: 0
   m_Name: Repositories
   m_TagString: Untagged
@@ -397,6 +434,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189227517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189227514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40ea0c3d50c10547b0d1ab76119991d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1759768718
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,32 +496,64 @@ MonoBehaviour:
     Merchants:
     - MerchantData:
         Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-        Name: 
-        Description: 
+        Name: XerxesTheMotherFucker
+        Description: He will fuck your mothers as your dads are dead
+        SpriteName: merchant2
       StockItems:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: 
+          Name: BaryNohy
           Description: 
-          Type: 0
-          ItemRarityProbabilities: []
-          ItemQualityProbabilities: []
-          SpriteName: 
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 1
+          SpriteName: Garlic
         Amount: 10
         UnitPrice: 5
         TotalPrice: 50
+        ItemQuality: 0
+        ItemRarity: 0
+    - MerchantData:
+        Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
+        Name: RobinTheWeaver
+        Description: He came from the underworld to weave your shit!
+        SpriteName: merchant1
+      StockItems:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: RobinovaNoha
+          Description: 
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 1
+          SpriteName: Carrot
+        Amount: 15
+        UnitPrice: 5
+        TotalPrice: 75
         ItemQuality: 0
         ItemRarity: 0
     Player:
       StockItems:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: 
+          Name: BaryNohy
           Description: 
-          Type: 0
-          ItemRarityProbabilities: []
-          ItemQualityProbabilities: []
-          SpriteName: 
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 1
+          SpriteName: Garlic
         Amount: 10
         UnitPrice: 5
         TotalPrice: 50

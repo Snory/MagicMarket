@@ -2,6 +2,13 @@
   {
     "Name": "RobinTheWeaver",
     "Description": "He came from the underworld to weave your shit!",
+    "SpriteName": "merchant1",
     "Identification": "976a1e77-f36c-4510-8084-c3a90220b50e"
+  },
+  {
+    "Name": "BarboraTheQueen",
+    "Description": "You are just a slave to me!",
+    "SpriteName": "merchant2",
+    "Identification": "2b763e3a-0e0b-47b8-9fb3-5747d9711295"
   }
 ]

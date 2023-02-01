@@ -61,13 +61,13 @@ public class GameplayDataJsonConverter
     //    gameplaydata.Add("GameData", gameData);
 
     //    //JArray merchants = new JArray();
-    //    //foreach (var merchant in input.Merchants)
+    //    //foreach (var Merchant in input.Merchants)
     //    //{
     //    //    JObject merchantData = new JObject();
-    //    //    merchantData.Add("Identification", merchant.MerchantData.Identification);
+    //    //    merchantData.Add("Identification", Merchant.MerchantData.Identification);
 
     //    //    JArray merchantStockItems = new JArray();
-    //    //    foreach (var stockItem in merchant.MerchantStockItems)
+    //    //    foreach (var stockItem in Merchant.MerchantStockItems)
     //    //    {
     //    //        JObject itemData = new JObject();
     //    //        itemData.Add("Identification", stockItem.ItemData.Identification);

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         _gameData = data;
 
-        //load merchant data
+        //load Merchant data
         foreach(var merchant in data.Merchants)
         {
             merchant.MerchantData = MerchantRepository.GetEntry(merchant.MerchantData.Identification);
