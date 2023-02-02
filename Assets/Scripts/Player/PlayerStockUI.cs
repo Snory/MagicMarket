@@ -57,7 +57,6 @@ public class PlayerStockUI : MonoBehaviour
         {
             GameObject contentItem = Instantiate(ContentItemPrefab, Content.transform);
 
-            Debug.Log("Reading sprite with name: " + stockItem.ItemData.SpriteName);
             Sprite sprite = _sprites[stockItem.ItemData.SpriteName];
 
             if(sprite == null)

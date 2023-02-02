@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MerchantSelectionUI : MonoBehaviour
 {
+
+    [Header("Informations")]
+    [SerializeField] private TextMeshProUGUI _merchantName;
+
+    [Header("Stock")]
     [SerializeField] private GameObject _stockContentParent;
     [SerializeField] private GameObject _stockContentItemPrefab;
     [SerializeField] private GameObject _merchantPictureObject;
@@ -27,11 +33,13 @@ public class MerchantSelectionUI : MonoBehaviour
     public void OnMerchantSelected(EventArgs args)
     {
         MerchantEventArgs merchantEventArgs = args as MerchantEventArgs;
+        MerchantData merchantData = merchantEventArgs.Merchant.MerchantData;
 
         //merchant pictrue
-        string merchantSpriteName = merchantEventArgs.Merchant.MerchantData.SpriteName;       
-        _merchantPictureObject.GetComponent<Image>().sprite = _sprites[merchantSpriteName];
+        _merchantPictureObject.GetComponent<Image>().sprite = _sprites[merchantData.SpriteName];
 
+        //merchant info
+        _merchantName.text = merchantData.Name;
 
         //stock
         //remove all previous objects
@@ -49,7 +57,6 @@ public class MerchantSelectionUI : MonoBehaviour
         {
             GameObject contentItem = Instantiate(_stockContentItemPrefab, _stockContentParent.transform);
 
-            Debug.Log("Reading sprite with name: " + stockItem.ItemData.SpriteName);
             Sprite sprite = _sprites[stockItem.ItemData.SpriteName];
 
             if (sprite == null)
