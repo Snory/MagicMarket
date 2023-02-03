@@ -20,4 +20,20 @@ MonoBehaviour:
       Name: 
       Description: 
       SpriteName: 
-    StockItems: []
+    StockItems:
+    - ItemData:
+        Identification: 
+        Name: 
+        Description: 
+        Type: 0
+        ItemRarityProbabilities: []
+        ItemQualityProbabilities: []
+        SpriteName: Carrot
+      Amount: 0
+      UnitPrice: 0
+      TotalPrice: 0
+      ItemQuality: 0
+      ItemRarity: 0
+  StockToBuy: []
+  StockToSell: []
+  PlayerBuying: 0
