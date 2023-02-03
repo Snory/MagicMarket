@@ -67,15 +67,15 @@ public class GameplayDataJsonConverter
     //    //    merchantData.Add("Identification", Merchant.MerchantData.Identification);
 
     //    //    JArray merchantStockItems = new JArray();
-    //    //    foreach (var stockItem in Merchant.MerchantStockItems)
+    //    //    foreach (var StockItem in Merchant.MerchantStockItems)
     //    //    {
     //    //        JObject itemData = new JObject();
-    //    //        itemData.Add("Identification", stockItem.ItemData.Identification);
-    //    //        itemData.Add("Amount", stockItem.Amount);
-    //    //        itemData.Add("Quality", stockItem.Quality.ToString());
-    //    //        itemData.Add("Rarity", stockItem.Rarity.ToString());
-    //    //        itemData.Add("TotalPrice", stockItem.TotalPrice);
-    //    //        itemData.Add("UnitPrice", stockItem.UnitPrice);
+    //    //        itemData.Add("Identification", StockItem.ItemData.Identification);
+    //    //        itemData.Add("Amount", StockItem.Amount);
+    //    //        itemData.Add("Quality", StockItem.Quality.ToString());
+    //    //        itemData.Add("Rarity", StockItem.Rarity.ToString());
+    //    //        itemData.Add("TotalPrice", StockItem.TotalPrice);
+    //    //        itemData.Add("UnitPrice", StockItem.UnitPrice);
 
     //    //        merchantStockItems.Add(itemData);
     //    //    }

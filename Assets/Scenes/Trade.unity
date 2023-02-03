@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 647174438}
   - component: {fileID: 647174439}
   - component: {fileID: 647174440}
+  - component: {fileID: 647174442}
+  - component: {fileID: 647174441}
   m_Layer: 0
   m_Name: Trade
   m_TagString: Untagged
@@ -199,6 +201,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &647174441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647174437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 55dd1e4589c2e1643b6179408c4549e4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
+        m_MethodName: OnTradeStockItemChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &647174442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647174437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb266248f2b75884b80531fd60fa05cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemsToBuy: []
 --- !u!1 &724515742
 GameObject:
   m_ObjectHideFlags: 0

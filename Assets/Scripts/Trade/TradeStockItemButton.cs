@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class TradeStockItemButton : MonoBehaviour
 {
-   [SerializeField] private GeneralEvent _eventToRaise; 
+    [SerializeField] private GeneralEvent _eventToRaise;
 
-   public virtual void OnButtonClick()
+    [SerializeField] private StockItem _stockItem;
+
+
+
+    public virtual void OnButtonClick()
     {
-        _eventToRaise.Raise();
+        _eventToRaise.Raise(new TradeStockItemEventArgs(_stockItem));
+    }
+
+    public void SetStockItem(StockItem item)
+    {
+        _stockItem = item;
     }
 
 }

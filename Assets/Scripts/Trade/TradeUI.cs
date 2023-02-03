@@ -50,6 +50,7 @@ public class TradeUI : MonoBehaviour
         foreach (var stockItem in argsStock.StockItems)
         {
             GameObject contentItem = Instantiate(_goalStockContentItem, _goalContent.transform);
+            contentItem.GetComponent<TradeStockItemButton>().SetStockItem(stockItem);
 
             Sprite sprite = _sprites[stockItem.ItemData.SpriteName];
 
