@@ -7,7 +7,6 @@ public class Trade : MonoBehaviour
 {
     [SerializeField] private List<StockItem> _itemsToBuy;
 
-
     public void OnTradeStockItemChanged(EventArgs args)
     {
         TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
