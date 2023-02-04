@@ -1,0 +1,72 @@
+[33mcommit e9ee03b3904c4e97fe8a9c5c8543849b337d5398[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 5a48470 8ad1a90
+Author: Snory <robtill.in@gmail.com>
+Date:   Sat Feb 4 17:06:12 2023 +0100
+
+    how the fuck can remote branch be ahead when i am working just from my computer?
+
+[33mcommit 5a484704858c06e2aa8cc0f3d802ff9c318e166e[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Sat Feb 4 12:36:40 2023 +0100
+
+    trade amount selection
+
+[33mcommit 8ad1a90ec306e9f10dedef34ac15734d7a44ed00[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Sat Feb 4 12:36:40 2023 +0100
+
+    trade amount selection
+
+[33mcommit 658c5e7da663763dad4eae6a2f92c6866a8f0b8b[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Fri Feb 3 05:32:00 2023 +0100
+
+    add trade stock item sending to Trade
+
+[33mcommit 5ce315ee123307dae64c2db4b53a04701181c41e[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Fri Feb 3 05:21:45 2023 +0100
+
+    added StockItemData equality
+
+[33mcommit 710a0ac00085f7d87e987e98915c3f4ad668ca7f[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Thu Feb 2 18:31:05 2023 +0100
+
+    created trade session data
+
+[33mcommit a51e349746161bbc7b346a1c37891c588060bf50[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Wed Feb 1 08:34:01 2023 +0100
+
+    merchant selection
+
+[33mcommit cc8f0d539ce3fdf117bed88a00b7b0b0c29a26a0[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Tue Jan 31 19:43:55 2023 +0100
+
+    add scene loaded
+
+[33mcommit 03a1ddfe33f0f4d297d271728618874c888fe637[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Mon Jan 30 08:47:33 2023 +0100
+
+    player stock with sprite loading
+
+[33mcommit 79fa11f198de530c3d00cd70917b39d704d0a3b7[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Sun Jan 29 08:58:04 2023 +0100
+
+    finished base function of repositories
+
+[33mcommit a73bdc5898b9c53ae256c671c2c3fd68d6a0ff37[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Fri Jan 27 18:56:10 2023 +0100
+
+    finished file repository with gameplay saving
+
+[33mcommit db74770429e0f8d4734420e45e042c13b8b6bbad[m
+Author: Snory <robtill.in@gmail.com>
+Date:   Fri Jan 27 10:15:59 2023 +0100
+
+    general events
