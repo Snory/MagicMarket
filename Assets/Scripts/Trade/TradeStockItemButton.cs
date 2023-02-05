@@ -11,6 +11,7 @@ public class TradeStockItemButton : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _amountSelected;
     [SerializeField] private GameObject _amountPanel;
+    [SerializeField] private GeneralEvent _tradeStockItemChanged;
 
     private void Awake()
     {
@@ -37,6 +38,11 @@ public class TradeStockItemButton : MonoBehaviour
     {
         _amountSelected.text = amount.ToString();
         _amountPanel.SetActive(true);
+    }
+
+    public GeneralEvent GetTradeStockItemChangedEvent()
+    {
+        return _tradeStockItemChanged;
     }
 
 }

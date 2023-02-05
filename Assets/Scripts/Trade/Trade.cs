@@ -19,4 +19,6 @@ public class Trade : MonoBehaviour
 
         _itemsToBuy.Add(stockItem);
     }
+
+
 }

@@ -7,6 +7,7 @@ public class TradePhaseHandle : MonoBehaviour
     [SerializeField] private TradeSessionData _sessionData;
 
     [SerializeField] private GeneralEvent GoalSelectionInitiated;
+    [SerializeField] private GeneralEvent OfferSelectionInitiated;
     [SerializeField] private GeneralEvent TradeStarted;
 
     // Start is called before the first frame update
@@ -28,7 +29,14 @@ public class TradePhaseHandle : MonoBehaviour
 
     public void OnGoalConfirmed()
     {
-        Debug.Log("Confirmed");
+        if (_sessionData.PlayerBuying)
+        {
+            OfferSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Player.StockItems));
+        }
+        else
+        {
+            OfferSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Merchant.StockItems));
+        }
     }
 
 }
