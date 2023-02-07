@@ -1668,6 +1668,8 @@ GameObject:
   - component: {fileID: 647174440}
   - component: {fileID: 647174442}
   - component: {fileID: 647174441}
+  - component: {fileID: 647174443}
+  - component: {fileID: 647174444}
   m_Layer: 0
   m_Name: Trade
   m_TagString: Untagged
@@ -1705,7 +1707,6 @@ MonoBehaviour:
   _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
   GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
   OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
-  TradeStarted: {fileID: 11400000, guid: b84f1c693b8044e42b7b646d99699934, type: 2}
 --- !u!114 &647174440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,13 +1747,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 55dd1e4589c2e1643b6179408c4549e4, type: 2}
+  Event: {fileID: 11400000, guid: eb6ae1b29a4379c4b92c09f12e17cea0, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 647174442}
         m_TargetAssemblyTypeName: Trade, Assembly-CSharp
-        m_MethodName: OnTradeStockItemChanged
+        m_MethodName: OnGoalStockItemChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1774,7 +1775,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb266248f2b75884b80531fd60fa05cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemsToBuy: []
+  _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
+  _goalStockItems: []
+  _offerStockItems: []
+  _negotiationPoints: 0
+--- !u!114 &647174443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647174437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 3d9907ec43c06774098e9096a44e1425, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
+        m_MethodName: OnOfferStockItemChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &647174444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647174437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c80272bdb0fdd46418a68008991dafec, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
+        m_MethodName: OnOfferConfirmed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &654091215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,8 +4330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91816ca6296da04ab6da6cbe89ab09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountSelectionPanel: {fileID: 2077778751}
-  _panelGroup: {fileID: 0}
 --- !u!114 &2140182753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4340,15 +4398,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e332702005a40498609b97275db02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainUI: {fileID: 2140182752}
   _stockPanel: {fileID: 1402464025}
+  _panelGroup: {fileID: 1402464027}
   _content: {fileID: 42337825}
   _stockItem: {fileID: 4860513767069077507, guid: 0b7b30cfb3ca46c459ff946b6378bd15, type: 3}
   _confirmedEvent: {fileID: 11400000, guid: c80272bdb0fdd46418a68008991dafec, type: 2}
   _amountSelectionPanel: {fileID: 654091215}
   _amountSelectionSlider: {fileID: 153579315}
-  _tradeItemStockChanged: {fileID: 11400000, guid: 55dd1e4589c2e1643b6179408c4549e4, type: 2}
+  _tradeItemStockChanged: {fileID: 11400000, guid: 3d9907ec43c06774098e9096a44e1425, type: 2}
   _tradeStockItemButton: {fileID: 0}
   _amount: {fileID: 557227402}
+  _closeAfterConfirmed: 0
 --- !u!114 &2140182756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,12 +4422,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e332702005a40498609b97275db02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainUI: {fileID: 2140182752}
   _stockPanel: {fileID: 724515742}
+  _panelGroup: {fileID: 724515746}
   _content: {fileID: 1650418012}
   _stockItem: {fileID: 5641181349755835833, guid: 837d5c2e7060c8743b28dd79625c35f4, type: 3}
   _confirmedEvent: {fileID: 11400000, guid: ca447097f22c48943a7ed54d0683f9e6, type: 2}
   _amountSelectionPanel: {fileID: 2077778751}
   _amountSelectionSlider: {fileID: 542889298}
-  _tradeItemStockChanged: {fileID: 11400000, guid: 55dd1e4589c2e1643b6179408c4549e4, type: 2}
+  _tradeItemStockChanged: {fileID: 11400000, guid: eb6ae1b29a4379c4b92c09f12e17cea0, type: 2}
   _tradeStockItemButton: {fileID: 0}
   _amount: {fileID: 945100814}
+  _closeAfterConfirmed: 1

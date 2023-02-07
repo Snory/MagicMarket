@@ -8,7 +8,6 @@ public class TradePhaseHandle : MonoBehaviour
 
     [SerializeField] private GeneralEvent GoalSelectionInitiated;
     [SerializeField] private GeneralEvent OfferSelectionInitiated;
-    [SerializeField] private GeneralEvent TradeStarted;
 
     // Start is called before the first frame update
     void Start()

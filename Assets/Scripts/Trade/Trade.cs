@@ -5,20 +5,64 @@ using UnityEngine;
 
 public class Trade : MonoBehaviour
 {
-    [SerializeField] private List<StockItem> _itemsToBuy;
+    [SerializeField] private TradeSessionData _sessionData;
 
-    public void OnTradeStockItemChanged(EventArgs args)
+    [SerializeField] private List<StockItem> _goalStockItems;
+    [SerializeField] private List<StockItem> _offerStockItems;
+
+    [SerializeField] private int _negotiationPoints;
+
+    public void OnGoalStockItemChanged(EventArgs args)
     {
         TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
         StockItem stockItem = stockItemArgs.StockItem;
 
-        if (_itemsToBuy.Contains(stockItem))
+        if (_goalStockItems.Contains(stockItem))
         {
-            _itemsToBuy.Remove(stockItem);
+            _goalStockItems.Remove(stockItem);
         }
 
-        _itemsToBuy.Add(stockItem);
+        _goalStockItems.Add(stockItem);
     }
+
+    public void OnOfferStockItemChanged(EventArgs args)
+    {
+        TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
+        StockItem stockItem = stockItemArgs.StockItem;
+
+        if (_offerStockItems.Contains(stockItem))
+        {
+            _offerStockItems.Remove(stockItem);
+        }
+
+        _offerStockItems.Add(stockItem);
+    }
+
+    public void OnOfferConfirmed()
+    {
+        float goalValue = 0;
+        float offerValue = 0;
+
+        foreach (var goal in _goalStockItems)
+        {
+            goalValue += goal.TotalPrice;
+        }
+
+        foreach (var offer in _offerStockItems)
+        {
+            offerValue += offer.TotalPrice;
+        }
+
+
+        if(offerValue >= goalValue)
+        {
+            _negotiationPoints += 1;
+        } else
+        {
+            _negotiationPoints -= 1;
+        }
+    }
+
 
 
 }

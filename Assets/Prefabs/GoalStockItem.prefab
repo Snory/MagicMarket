@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393159358561846471, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}
       propertyPath: m_Name
-      value: TradeStockItem
+      value: GoalStockItem
       objectReference: {fileID: 0}
     - target: {fileID: 8908879978699095508, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -370,6 +370,7 @@ MonoBehaviour:
     ItemRarity: 0
   _amountSelected: {fileID: 1524716954}
   _amountPanel: {fileID: 1052285159}
+  _tradeStockItemChanged: {fileID: 11400000, guid: eb6ae1b29a4379c4b92c09f12e17cea0, type: 2}
 --- !u!224 &5641181349755835834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3393159358561846468, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}

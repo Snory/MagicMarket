@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5636707352106977214, guid: 837d5c2e7060c8743b28dd79625c35f4, type: 3}
+      propertyPath: _tradeStockItemChanged
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d9907ec43c06774098e9096a44e1425, type: 2}
     - target: {fileID: 5641181349755835833, guid: 837d5c2e7060c8743b28dd79625c35f4, type: 3}
       propertyPath: m_Name
-      value: TradeStockItem
+      value: OfferStockItem
       objectReference: {fileID: 0}
     - target: {fileID: 5641181349755835834, guid: 837d5c2e7060c8743b28dd79625c35f4, type: 3}
       propertyPath: m_Pivot.x

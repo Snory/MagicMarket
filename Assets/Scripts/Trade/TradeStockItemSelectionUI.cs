@@ -10,9 +10,12 @@ using UnityEngine.UI;
 
 public class TradeStockItemSelectionUI : MonoBehaviour
 {
-    [Header("Goals")]
+    [SerializeField] private TradeUI _mainUI;
+
+
+    [Header("Stock item selection")]
     [SerializeField] private GameObject _stockPanel;
-    private CanvasGroup _panelGroup;
+    [SerializeField] private CanvasGroup _panelGroup;
     [SerializeField] private GameObject _content;
     [SerializeField] private GameObject _stockItem;
     [SerializeField] private GeneralEvent _confirmedEvent;
@@ -24,21 +27,8 @@ public class TradeStockItemSelectionUI : MonoBehaviour
     [SerializeField] private TradeStockItemButton _tradeStockItemButton;
     [SerializeField] private TextMeshProUGUI _amount;
 
-    private Dictionary<string, Sprite> _sprites;
-
-
-    private void Awake()
-    {
-        //create dictionary of pictures
-        _sprites = new Dictionary<string, Sprite>();
-
-        foreach (var sprite in Resources.LoadAll<Sprite>("Textures"))
-        {
-            _sprites.Add(sprite.name, sprite);
-        }
-
-        _panelGroup = _stockPanel.GetComponent<CanvasGroup>();
-    }
+    [Header("Behavior")]
+    [SerializeField] private bool _closeAfterConfirmed;
 
     public void OnSelectionInitiated(EventArgs args)
     {
@@ -60,7 +50,7 @@ public class TradeStockItemSelectionUI : MonoBehaviour
             GameObject contentItem = Instantiate(_stockItem, _content.transform);
             contentItem.GetComponent<TradeStockItemButton>().SetStockItem(stockItem, OnAmountSelection);
 
-            Sprite sprite = _sprites[stockItem.ItemData.SpriteName];
+            Sprite sprite = _mainUI.GetSprite(stockItem.ItemData.SpriteName);
 
             if (sprite == null)
             {
@@ -75,7 +65,10 @@ public class TradeStockItemSelectionUI : MonoBehaviour
 
     public void OnButtonConfirmed()
     {
-        _stockPanel.SetActive(false);
+        if (_closeAfterConfirmed)
+        {
+            _stockPanel.SetActive(false);
+        }
         _confirmedEvent.Raise();
     }
 
@@ -101,6 +94,8 @@ public class TradeStockItemSelectionUI : MonoBehaviour
         {
             ItemData = selectedStockItem.ItemData,
             Amount = _amountSelectionSlider.value,
+            UnitPrice = selectedStockItem.UnitPrice,
+            TotalPrice = selectedStockItem.TotalPrice,
             ItemQuality = selectedStockItem.ItemQuality,
             ItemRarity = selectedStockItem.ItemRarity
         };
