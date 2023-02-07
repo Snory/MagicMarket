@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-
+[CreateAssetMenu(fileName = "NewItemDataRepository", menuName = "Repository/FileRepository/ItemData")]
 public class ItemDataFileRepository : FileRepository<ItemData>
 {
     public override void CreateEntry()

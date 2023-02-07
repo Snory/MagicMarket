@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NewMerchantDataRepository", menuName = "Repository/FileRepository/MerchantData")]
 public class MerchantDataFileRepository : FileRepository<MerchantData>
 {
     public override void CreateEntry()

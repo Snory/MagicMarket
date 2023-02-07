@@ -32,6 +32,7 @@ public class TradeStockItemSelectionUI : MonoBehaviour
 
     public void OnSelectionInitiated(EventArgs args)
     {
+
         TradeStockEventArgs argsStock = (TradeStockEventArgs)args;
         _stockPanel.SetActive(true);
 

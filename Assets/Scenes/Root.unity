@@ -224,66 +224,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &62810681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 62810682}
-  - component: {fileID: 62810683}
-  m_Layer: 0
-  m_Name: MerchantRepository
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &62810682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62810681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1189227516}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &62810683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62810681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f32faa76f5b6dda439470f3b75eb9e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _entries:
-  - Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-    Name: RobinTheWeaver
-    Description: He came from the underworld to weave your shit!
-    SpriteName: merchant1
-  - Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
-    Name: BarboraTheQueen
-    Description: You are just a slave to me!
-    SpriteName: merchant2
-  _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
-  _repositoryFolderPath:
-  - Resources
-  - Repositories
-  - Merchants
-  _repositoryFileName: Merchant
-  _repositoryType: 1
 --- !u!1 &334590533
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,91 +291,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &697855610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 697855611}
-  - component: {fileID: 697855612}
-  m_Layer: 0
-  m_Name: ItemRepository
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &697855611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697855610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1189227516}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697855612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697855610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff371b258d007e48961cf2fdc285d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _entries:
-  - Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
-    Name: RobinovaNoha
-    Description: 
-    Type: 1
-    ItemRarityProbabilities:
-    - Rarity: 0
-      Probability: 1
-    ItemQualityProbabilities:
-    - Quality: 0
-      Probability: 1
-    SpriteName: Carrot
-  - Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-    Name: BaryNohy
-    Description: 
-    Type: 1
-    ItemRarityProbabilities:
-    - Rarity: 0
-      Probability: 1
-    ItemQualityProbabilities:
-    - Quality: 0
-      Probability: 1
-    SpriteName: Garlic
-  - Identification: 59bb3a33-98da-46bd-927b-c9d54038fabc
-    Name: JeldovaNoha
-    Description: 
-    Type: 1
-    ItemRarityProbabilities:
-    - Rarity: 0
-      Probability: 1
-    ItemQualityProbabilities:
-    - Quality: 0
-      Probability: 1
-    SpriteName: Corn
-  _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
-  _repositoryFolderPath:
-  - Resources
-  - Repositories
-  - Items
-  _repositoryFileName: Items
-  _repositoryType: 1
 --- !u!1 &840049305
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,9 +392,9 @@ MonoBehaviour:
         ItemQuality: 0
         ItemRarity: 0
   _gameDataSent: {fileID: 11400000, guid: bbe3d35b818aa694e8028ef5f965cbec, type: 2}
-  GameDataRepository: {fileID: 1759768720}
-  MerchantRepository: {fileID: 62810683}
-  ItemRepository: {fileID: 697855612}
+  GameDataRepository: {fileID: 11400000, guid: 4016ab3f73ef6c14a9af3b38c365a8f3, type: 2}
+  MerchantRepository: {fileID: 11400000, guid: 66e180bf097d9ae41801df90da5d7909, type: 2}
+  ItemRepository: {fileID: 11400000, guid: 6cc443e93dd30324b9a02fc4b0d556d2, type: 2}
 --- !u!4 &840049307
 Transform:
   m_ObjectHideFlags: 0
@@ -714,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1189227516}
   - component: {fileID: 1189227517}
+  - component: {fileID: 1189227518}
   m_Layer: 0
   m_Name: Repositories
   m_TagString: Untagged
@@ -732,10 +588,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 697855611}
-  - {fileID: 62810682}
-  - {fileID: 1759768719}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -751,124 +604,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40ea0c3d50c10547b0d1ab76119991d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1759768718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1759768719}
-  - component: {fileID: 1759768720}
-  m_Layer: 0
-  m_Name: GameDataRepository
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1759768719
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759768718}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1189227516}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1759768720
+--- !u!114 &1189227518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759768718}
+  m_GameObject: {fileID: 1189227514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a0180805b037804483e44d0a88d1869, type: 3}
+  m_Script: {fileID: 11500000, guid: a12cfe955ee069a44b11063fb8167a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entries:
-  - Identification: 06337a46-128b-4d43-9ac9-f83112bd568c
-    Name: MyFirstGame!
-    Merchants:
-    - MerchantData:
-        Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-        Name: XerxesTheMotherFucker
-        Description: He will fuck your mothers as your dads are dead
-        SpriteName: merchant2
-      StockItems:
-      - ItemData:
-          Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
-          Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
-        Amount: 10
-        UnitPrice: 5
-        TotalPrice: 50
-        ItemQuality: 0
-        ItemRarity: 0
-    - MerchantData:
-        Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
-        Name: RobinTheWeaver
-        Description: He came from the underworld to weave your shit!
-        SpriteName: merchant1
-      StockItems:
-      - ItemData:
-          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
-          Name: RobinovaNoha
-          Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Carrot
-        Amount: 15
-        UnitPrice: 5
-        TotalPrice: 75
-        ItemQuality: 0
-        ItemRarity: 0
-    Player:
-      StockItems:
-      - ItemData:
-          Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
-          Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
-        Amount: 10
-        UnitPrice: 5
-        TotalPrice: 50
-        ItemQuality: 0
-        ItemRarity: 0
-  _repositoryDataPath: C:/Users/robti/AppData/LocalLow/DefaultCompany/MagicMarket
-  _repositoryFolderPath:
-  - Games
-  _repositoryFileName: Games
-  _repositoryType: 0
+  _persistables:
+  - {fileID: 11400000, guid: 4016ab3f73ef6c14a9af3b38c365a8f3, type: 2}
+  - {fileID: 11400000, guid: 6cc443e93dd30324b9a02fc4b0d556d2, type: 2}
+  - {fileID: 11400000, guid: 66e180bf097d9ae41801df90da5d7909, type: 2}
 --- !u!1 &1986334140
 GameObject:
   m_ObjectHideFlags: 0

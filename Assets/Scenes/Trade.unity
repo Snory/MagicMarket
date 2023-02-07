@@ -1664,9 +1664,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647174438}
-  - component: {fileID: 647174439}
-  - component: {fileID: 647174440}
   - component: {fileID: 647174442}
+  - component: {fileID: 647174440}
   - component: {fileID: 647174441}
   - component: {fileID: 647174443}
   - component: {fileID: 647174444}
@@ -1692,21 +1691,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &647174439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647174437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314a83262169bff4abefda4d3c231dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
-  GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
-  OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
 --- !u!114 &647174440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,8 +1707,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 647174439}
-        m_TargetAssemblyTypeName: TradePhaseHandle, Assembly-CSharp
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
         m_MethodName: OnGoalConfirmed
         m_Mode: 1
         m_Arguments:
@@ -1779,6 +1763,8 @@ MonoBehaviour:
   _goalStockItems: []
   _offerStockItems: []
   _negotiationPoints: 0
+  GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
+  OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
 --- !u!114 &647174443
 MonoBehaviour:
   m_ObjectHideFlags: 0
