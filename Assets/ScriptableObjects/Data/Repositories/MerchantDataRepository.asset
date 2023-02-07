@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32faa76f5b6dda439470f3b75eb9e16, type: 3}
+  m_Name: MerchantDataRepository
+  m_EditorClassIdentifier: 
+  _entries:
+  - Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
+    Name: RobinTheWeaver
+    Description: He came from the underworld to weave your shit!
+    SpriteName: merchant1
+  - Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
+    Name: BarboraTheQueen
+    Description: You are just a slave to me!
+    SpriteName: merchant2
+  _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
+  _repositoryFolderPath:
+  - Resources
+  - Repositories
+  - Merchants
+  _repositoryFileName: Merchant
+  _repositoryType: 1

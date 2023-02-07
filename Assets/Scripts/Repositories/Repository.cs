@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class Repository<T> : MonoBehaviour, IPersistable, ICreatableEntry where T : Identity
+public abstract class Repository<T> : ScriptableObject, IPersistable, ICreatableEntry where T : Identity
 {
     [SerializeField]
     protected List<T> _entries;

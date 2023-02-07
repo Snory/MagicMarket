@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0180805b037804483e44d0a88d1869, type: 3}
+  m_Name: GameDataRepository
+  m_EditorClassIdentifier: 
+  _entries: []
+  _repositoryDataPath: C:/Users/robti/AppData/LocalLow/DefaultCompany/MagicMarket
+  _repositoryFolderPath:
+  - Games
+  _repositoryFileName: Games
+  _repositoryType: 0
