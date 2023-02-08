@@ -31,6 +31,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("New game")]
+    public void NewGame()
+    {
+        _gameData = new GameData();
+
+        //load merchant and set their base data
+        //load player and set their base data
+        //load stock and set their base data
+
+    }
+
+
     [ContextMenu("Load game")]
     public void LoadGame()
     {
@@ -52,17 +64,28 @@ public class GameManager : MonoBehaviour
         foreach(var merchant in data.Merchants)
         {
             merchant.MerchantData = MerchantRepository.GetEntry(merchant.MerchantData.Identification);
-
+            
             foreach(var stockitem in merchant.StockItems)
             {
                 stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
             }
+
+            foreach (var itemMarketKnowledge in merchant.ItemMarketKnowledge)
+            {
+                itemMarketKnowledge.ItemData = ItemRepository.GetEntry(itemMarketKnowledge.ItemData.Identification);
+            }
         }
 
+        //load player data
         foreach (var stockitem in _gameData.Player.StockItems)
         {
             stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
         }
+
+
+        //load market stock data
+
+
     }
 
 

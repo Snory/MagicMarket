@@ -1762,9 +1762,11 @@ MonoBehaviour:
   _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
   _goalStockItems: []
   _offerStockItems: []
-  _negotiationPoints: 0
   GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
   OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
+  _negotiationPoints: 0
+  _merchantExpectedValue: 0
+  _playerSelectedValue: 0
 --- !u!114 &647174443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,7 +2976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: Its a deal!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3366,7 +3368,7 @@ GameObject:
   - component: {fileID: 1473635874}
   - component: {fileID: 1473635873}
   m_Layer: 0
-  m_Name: TradeBack
+  m_Name: FinishTrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3437,9 +3439,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2140182752}
-        m_TargetAssemblyTypeName: TradeUI, Assembly-CSharp
-        m_MethodName: OnTradeButtonBack
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
+        m_MethodName: OnFinishTrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

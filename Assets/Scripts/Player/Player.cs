@@ -8,6 +8,7 @@ using UnityEngine;
 public class Player 
 {
     public List<StockItem> StockItems;
+    public int ReputationPoints;
 
   
 }

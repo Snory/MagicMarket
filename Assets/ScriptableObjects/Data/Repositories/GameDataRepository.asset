@@ -12,7 +12,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0180805b037804483e44d0a88d1869, type: 3}
   m_Name: GameDataRepository
   m_EditorClassIdentifier: 
-  _entries: []
+  _entries:
+  - Identification: 06337a46-128b-4d43-9ac9-f83112bd568c
+    Name: MyFirstGame1!
+    Merchants:
+    - MerchantData:
+        Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
+        Name: 
+        Description: 
+        SpriteName: 
+        GeneralMarketKnowledge: 0
+      StockItems:
+      - ItemData:
+          Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 10
+        UnitPrice: 5
+        TotalPrice: 50
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitPrice: 5
+      CurrentGeneralMarketKnowledge: 0.5
+    - MerchantData:
+        Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
+        Name: 
+        Description: 
+        SpriteName: 
+        GeneralMarketKnowledge: 0
+      StockItems:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 15
+        UnitPrice: 5
+        TotalPrice: 75
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitPrice: 5
+      CurrentGeneralMarketKnowledge: 0.5
+    Player:
+      StockItems:
+      - ItemData:
+          Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 10
+        UnitPrice: 5
+        TotalPrice: 50
+      ReputationPoints: 0
   _repositoryDataPath: C:/Users/robti/AppData/LocalLow/DefaultCompany/MagicMarket
   _repositoryFolderPath:
   - Games

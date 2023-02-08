@@ -21,26 +21,38 @@ public class GameDataJsonConverter : JsonConverter
             Name = (string)input["Name"],
             Merchants = input["Merchants"] != null && input["Merchants"].HasValues
                     ? ((JArray)input["Merchants"]).Select(m => new Merchant
-            {
-                MerchantData = new MerchantData
-                {
-                    Identification = (string)m["MerchantData"]["Identification"]
-                },
-                StockItems = m["MerchantStockItems"] != null && m["MerchantStockItems"].HasValues
-                    ? ((JArray)m["MerchantStockItems"]).Select(s => new StockItem
-                {
-                    ItemData = new ItemData
                     {
-                        Identification = (string) s["ItemData"]["Identification"]
-                    },
-                    Amount = (float)s["Amount"],
-                    UnitPrice = (float)s["UnitPrice"],
-                    TotalPrice = (float)s["TotalPrice"],
-                    ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
-                    ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
-                }).ToList() : new List<StockItem>()
+                        MerchantData = new MerchantData
+                        {
+                            Identification = (string)m["MerchantData"]["Identification"]
+                        },
+                        CurrentGeneralMarketKnowledge = (float)m["CurrentGeneralMarketKnowledge"],
+                        StockItems = m["MerchantStockItems"] != null && m["MerchantStockItems"].HasValues
+                            ? ((JArray)m["MerchantStockItems"]).Select(s => new StockItem
+                            {
+                                ItemData = new ItemData
+                                {
+                                    Identification = (string)s["ItemData"]["Identification"]
+                                },
+                                Amount = (float)s["Amount"],
+                                UnitPrice = (float)s["UnitPrice"],
+                                TotalPrice = (float)s["TotalPrice"],
+                                ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
+                            }).ToList() : new List<StockItem>(),
+                        ItemMarketKnowledge = m["MarketItemMarketKnowledge"] != null && m["MarketItemMarketKnowledge"].HasValues
+                            ? ((JArray)m["MarketItemMarketKnowledge"]).Select(s => new StockItemMarketKnowledge
+                            {
+                                ItemData = new ItemData
+                                {
+                                    Identification = (string)s["ItemData"]["Identification"]
+                                },
+                                UnitPrice = (float)s["UnitPrice"],
+                                ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
+                            }).ToList() : new List<StockItemMarketKnowledge>()
 
-            }).ToList() : new List<Merchant>(),
+                    }).ToList() : new List<Merchant>(),
             Player = new Player
             {
                 StockItems = input["Player"]["PlayerStockItems"] != null && input["Player"]["PlayerStockItems"].HasValues
@@ -65,21 +77,21 @@ public class GameDataJsonConverter : JsonConverter
 
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-        GameData input = (GameData) value;
+        GameData input = (GameData)value;
 
         JObject gameData = new JObject();
         gameData.Add("Identification", input.Identification);
         gameData.Add("Name", input.Name);
 
         JArray merchants = new JArray();
-        foreach(var merchant in input.Merchants)
+        foreach (var merchant in input.Merchants)
         {
             JObject merchantData = new JObject();
             merchantData.Add("Identification", merchant.MerchantData.Identification);
 
             JArray merchantStockitems = new JArray();
 
-            foreach(var stockItem in merchant.StockItems)
+            foreach (var stockItem in merchant.StockItems)
             {
                 JObject itemData = new JObject();
                 itemData.Add("Identification", stockItem.ItemData.Identification);
@@ -95,9 +107,27 @@ public class GameDataJsonConverter : JsonConverter
                 merchantStockitems.Add(stockItemObject);
             }
 
+            JArray merchantMarketItemKnowledge = new JArray();
+
+            foreach (var itemMarketKnowledge in merchant.ItemMarketKnowledge)
+            {
+                JObject itemData = new JObject();
+                itemData.Add("Identification", itemMarketKnowledge.ItemData.Identification);
+
+                JObject itemmarketKnowledgeObject = new JObject();
+                itemmarketKnowledgeObject.Add("ItemData", itemData);
+                itemmarketKnowledgeObject.Add("UnitPrice", itemMarketKnowledge.UnitPrice);
+                itemmarketKnowledgeObject.Add("Quality", itemMarketKnowledge.ItemQuality.ToString());
+                itemmarketKnowledgeObject.Add("Rarity", itemMarketKnowledge.ItemRarity.ToString());
+                merchantMarketItemKnowledge.Add(itemmarketKnowledgeObject);
+            }
+
+
             JObject merchantObject = new JObject();
             merchantObject.Add("MerchantData", merchantData);
             merchantObject.Add("MerchantStockItems", merchantStockitems);
+            merchantObject.Add("CurrentGeneralMarketKnowledge", merchant.CurrentGeneralMarketKnowledge);
+            merchantObject.Add("MarketItemMarketKnowledge", merchantMarketItemKnowledge);
             merchants.Add(merchantObject);
         }
 
@@ -120,7 +150,7 @@ public class GameDataJsonConverter : JsonConverter
             playerStockItems.Add(stockItemObject);
         }
 
-        player.Add("PlayerStockItems",playerStockItems);
+        player.Add("PlayerStockItems", playerStockItems);
 
         gameData.Add("Merchants", merchants);
         gameData.Add("Player", player);

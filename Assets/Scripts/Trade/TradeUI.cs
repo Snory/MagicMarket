@@ -22,13 +22,6 @@ public class TradeUI : MonoBehaviour
         }
     }
 
-    public void OnTradeButtonBack()
-    {
-        //this should probably go via TradePhaseHandle or raise request as it will impact the reputation points
-        SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
-    }
-
-
     public Sprite GetSprite(string name)
     {
         return _sprites[name];
