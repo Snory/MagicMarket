@@ -18,23 +18,19 @@ MonoBehaviour:
     Merchants:
     - MerchantData:
         Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-        Name: RobinTheWeaver
-        Description: He came from the underworld to weave your shit!
-        SpriteName: merchant1
+        Name: 
+        Description: 
+        SpriteName: 
         GeneralMarketKnowledge: 0
       StockItems:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         Amount: 10
@@ -43,39 +39,31 @@ MonoBehaviour:
       ItemMarketKnowledge:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         UnitPrice: 5
       CurrentGeneralMarketKnowledge: 0.5
     - MerchantData:
         Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
-        Name: BarboraTheQueen
-        Description: You are just a slave to me!
-        SpriteName: merchant2
+        Name: 
+        Description: 
+        SpriteName: 
         GeneralMarketKnowledge: 0
       StockItems:
       - ItemData:
           Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
-          Name: RobinovaNoha
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Carrot
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         Amount: 15
@@ -84,31 +72,23 @@ MonoBehaviour:
       ItemMarketKnowledge:
       - ItemData:
           Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
-          Name: RobinovaNoha
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Carrot
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         UnitPrice: 5
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         UnitPrice: 5.1463046
@@ -117,22 +97,46 @@ MonoBehaviour:
       StockItems:
       - ItemData:
           Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-          Name: BaryNohy
+          Name: 
           Description: 
-          Type: 1
-          ItemRarityProbabilities:
-          - Rarity: 0
-            Probability: 1
-          ItemQualityProbabilities:
-          - Quality: 0
-            Probability: 1
-          SpriteName: Garlic
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
         ItemQuality: 0
         ItemRarity: 0
         Amount: 10
         UnitPrice: 5
         TotalPrice: 50
-      ReputationPoints: 1
+      ReputationPoints: 0
+    Market:
+      StockItems:
+      - ItemData:
+          Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 20
+        UnitPrice: 5
+        TotalPrice: 100
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: 
+          Description: 
+          Type: 0
+          ItemRarityProbabilities: []
+          ItemQualityProbabilities: []
+          SpriteName: 
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 15
+        UnitPrice: 5
+        TotalPrice: 75
   _repositoryDataPath: C:/Users/robti/AppData/LocalLow/DefaultCompany/MagicMarket
   _repositoryFolderPath:
   - Games

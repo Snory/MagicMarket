@@ -1669,6 +1669,7 @@ GameObject:
   - component: {fileID: 647174441}
   - component: {fileID: 647174443}
   - component: {fileID: 647174444}
+  - component: {fileID: 647174445}
   m_Layer: 0
   m_Name: Trade
   m_TagString: Untagged
@@ -1759,6 +1760,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb266248f2b75884b80531fd60fa05cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameData:
+    Identification: 7ea554f5-bb64-4102-94ef-8bf646f13ce8
+    Name: 
+    Merchants: []
+    Player:
+      StockItems: []
+      ReputationPoints: 0
+    Market:
+      StockItems: []
   _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
   _goalStockItems: []
   _offerStockItems: []
@@ -1815,6 +1825,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Trade, Assembly-CSharp
         m_MethodName: OnOfferConfirmed
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &647174445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647174437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bbe3d35b818aa694e8028ef5f965cbec, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647174442}
+        m_TargetAssemblyTypeName: Trade, Assembly-CSharp
+        m_MethodName: OnGameDataSent
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -23,7 +23,7 @@ public class Trade : MonoBehaviour
 
     private float _goalValue = 0;
     private float _offerValue = 0;
-
+    private float _marketKnowledge = 0;
 
     [Header("Test variables")]
     [SerializeField] private int _negotiationPoints;
@@ -67,7 +67,8 @@ public class Trade : MonoBehaviour
     public void OnOfferConfirmed()
     {
         CalculateOfferValue();
-
+        CalculateMarketKnowledge();
+        
         //know how to calculate negotiation points   
         if(_offerValue >= _goalValue)
         {
@@ -76,6 +77,8 @@ public class Trade : MonoBehaviour
         {
             _negotiationPoints = -1;
         }
+
+
 
         //what if i would compare the offer to goal value and calculate something like player "karma" for 
             //selling something for much lower value than the market value
@@ -88,12 +91,41 @@ public class Trade : MonoBehaviour
 
     }
 
+    private void CalculateMarketKnowledge()
+    {
+        Market market = _gameData.Market;
+
+        if(market == null)
+        {
+            Debug.LogError("Missing market!");
+        }
+
+        float goalValue = 0;
+
+        foreach (var goal in _goalStockItems)
+        {
+            float marketUnitPrice = market.GetStockItem(goal).UnitPrice;
+            goalValue += goal.Amount * marketUnitPrice;
+        }
+
+        float offerValue = 0;
+
+        foreach (var offer in _offerStockItems)
+        {
+            float marketUnitPrice = market.GetStockItem(offer).UnitPrice;
+            offerValue += offer.Amount * marketUnitPrice;
+        }
+
+        _marketKnowledge = (offerValue / goalValue) > 1 ? (goalValue/ offerValue) : (offerValue / goalValue);
+    }
+
     public void OnGUI()
     {
         guiStyle.fontSize = 20;
         GUI.Label(new Rect(10, 10, 200, 40), $"Merchant value: {_merchantExpectedValue}", guiStyle);
         GUI.Label(new Rect(10, 50, 200, 40), $"Player value: {_playerSelectedValue}", guiStyle);
         GUI.Label(new Rect(10, 90, 200, 40), $"Negotiation points: {_negotiationPoints}", guiStyle);
+        GUI.Label(new Rect(10, 130, 200, 40), $"Market knowledge: {_marketKnowledge * 100} %", guiStyle);
     }
 
     public void OnFinishTrade()
