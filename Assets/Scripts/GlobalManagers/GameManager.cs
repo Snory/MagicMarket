@@ -84,7 +84,10 @@ public class GameManager : MonoBehaviour
 
 
         //load market stock data
-
+        foreach (var stockitem in _gameData.Market.StockItems)
+        {
+            stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
+        }
 
     }
 

@@ -12,9 +12,9 @@ public class Merchant
     public List<StockItemMarketKnowledge> ItemMarketKnowledge;
     public float CurrentGeneralMarketKnowledge;
 
-    public StockItemMarketKnowledge GetItemMarketKnowledge(string itemIdentification)
+    public StockItemMarketKnowledge GetItemMarketKnowledge(StockItemBase stockItem)
     {
-        return ItemMarketKnowledge.Where(imk => imk.ItemData.Identification == itemIdentification).FirstOrDefault();
+        return ItemMarketKnowledge.Where(imk => imk == stockItem).FirstOrDefault();
     }
 
 }

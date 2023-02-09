@@ -12,4 +12,5 @@ public class GameData : Identity
     public string Name;
     public List<Merchant> Merchants;
     public Player Player;
+    public Market Market;
 }

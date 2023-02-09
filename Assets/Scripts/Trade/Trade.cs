@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class Trade : MonoBehaviour
 {
+    [SerializeField] private GameData _gameData;
     [SerializeField] private TradeSessionData _sessionData;
 
     [SerializeField] private List<StockItem> _goalStockItems;
@@ -100,6 +102,19 @@ public class Trade : MonoBehaviour
         Player player = _sessionData.Player;
         player.ReputationPoints += _negotiationPoints >= 0 ? 1 : -1;
 
+
+        //update market stock prices
+        _gameData.Market.AddTransaction(_goalStockItems, _offerStockItems);
+
+        //update merchant stock
+
+        //update merchant market knowledge
+
+        //update player stock
+
+        //update player reputation points
+
+
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
     }
 
@@ -128,14 +143,22 @@ public class Trade : MonoBehaviour
         {
             float value = 0;
 
-            StockItemMarketKnowledge itemMarketKnowledge = merchant.GetItemMarketKnowledge(goal.ItemData.Identification);
+            StockItemMarketKnowledge itemMarketKnowledge = merchant.GetItemMarketKnowledge(goal);
 
             if(itemMarketKnowledge == null)
             {
-                //apply current market knowledge
-                value = Random.Range(value - (value * (1 - merchant.CurrentGeneralMarketKnowledge)), value + (value * (1 - merchant.CurrentGeneralMarketKnowledge)));
-                
-                //store it as current merchant market knowledge
+                if (_sessionData.PlayerBuying) //selling merchant items
+                {
+                    Debug.LogError("Merchant should not value of his own items!");
+                } else //buying items from player
+                {
+                    //player is telling me it cost "XX", but merchant market knowledge know the real value!
+                    value = Random.Range(goal.UnitPrice - (goal.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), goal.UnitPrice + (goal.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                }
+
+
+                //this will store it right after first value proposal
+                    //i will leave it here, it could create interesting situations
                 merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = goal.ItemData, UnitPrice = value });
 
             } else
@@ -159,16 +182,23 @@ public class Trade : MonoBehaviour
         {
             float value = 0;
 
-            StockItemMarketKnowledge itemMarketKnowledge = merchant.GetItemMarketKnowledge(offer.ItemData.Identification);
+            StockItemMarketKnowledge itemMarketKnowledge = merchant.GetItemMarketKnowledge(offer);
 
             if (itemMarketKnowledge == null)
             {
 
-                //apply current market knowledge
+                if (_sessionData.PlayerBuying) //selling merchant items
+                {
                     //player is telling me it cost "XX", but merchant market knowledge know the real value!
-                value = Random.Range(offer.TotalPrice - (offer.TotalPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.TotalPrice + (offer.TotalPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                    value = Random.Range(offer.UnitPrice - (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.UnitPrice + (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                }
+                else //buying items from player
+                {
+                    Debug.LogError("Merchant should not value of his own items!");
+                }
 
-                //store it as current merchant market knowledge
+                //this will store it right after first value proposal
+                    //i will leave it here, it could create interesting situations
                 merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = offer.ItemData, UnitPrice = value });
 
             }
@@ -176,7 +206,6 @@ public class Trade : MonoBehaviour
             {
                 value = itemMarketKnowledge.UnitPrice;
             }
-
 
             _offerValue += offer.Amount * value;
         }
@@ -196,6 +225,14 @@ public class Trade : MonoBehaviour
         {
             GoalSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Player.StockItems));
         }
+    }
+
+
+    public void OnGameDataSent(EventArgs eventArgs)
+    {
+        GameDataEventArgs gameDataEventArgs = (GameDataEventArgs) eventArgs;
+
+        _gameData = gameDataEventArgs.GameData;
     }
 
 

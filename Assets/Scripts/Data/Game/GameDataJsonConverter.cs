@@ -68,6 +68,22 @@ public class GameDataJsonConverter : JsonConverter
                         ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
                         ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
                     }).ToList() : new List<StockItem>()
+            },
+            Market = new Market
+            {
+                StockItems = input["Market"]["MarketStockItems"] != null && input["Market"]["MarketStockItems"].HasValues
+                    ? ((JArray)input["Market"]["MarketStockItems"]).Select(s => new StockItem
+                    {
+                        ItemData = new ItemData
+                        {
+                            Identification = (string)s["ItemData"]["Identification"]
+                        },
+                        Amount = (float)s["Amount"],
+                        UnitPrice = (float)s["UnitPrice"],
+                        TotalPrice = (float)s["TotalPrice"],
+                        ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                        ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
+                    }).ToList() : new List<StockItem>()
             }
         };
 
@@ -152,8 +168,31 @@ public class GameDataJsonConverter : JsonConverter
 
         player.Add("PlayerStockItems", playerStockItems);
 
+        JObject market = new JObject();
+        JArray marketStockItems = new JArray();
+
+        foreach (var stockItem in input.Market.StockItems)
+        {
+            JObject itemData = new JObject();
+            itemData.Add("Identification", stockItem.ItemData.Identification);
+
+            JObject stockItemObject = new JObject();
+            stockItemObject.Add("ItemData", itemData);
+
+            stockItemObject.Add("Amount", stockItem.Amount);
+            stockItemObject.Add("UnitPrice", stockItem.UnitPrice);
+            stockItemObject.Add("TotalPrice", stockItem.TotalPrice);
+            stockItemObject.Add("Quality", stockItem.ItemQuality.ToString());
+            stockItemObject.Add("Rarity", stockItem.ItemRarity.ToString());
+            marketStockItems.Add(stockItemObject);
+        }
+
+        market.Add("MarketStockItems", marketStockItems);
+
+
         gameData.Add("Merchants", merchants);
         gameData.Add("Player", player);
+        gameData.Add("Market", market);
         gameData.WriteTo(writer);
     }
 }
