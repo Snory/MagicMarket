@@ -24,6 +24,7 @@ public class Trade : MonoBehaviour
     private float _goalValue = 0;
     private float _offerValue = 0;
     private float _marketKnowledge = 0;
+    private float _karmaPoints = 0;
 
     [Header("Test variables")]
     [SerializeField] private int _negotiationPoints;
@@ -68,27 +69,63 @@ public class Trade : MonoBehaviour
     {
         CalculateOfferValue();
         CalculateMarketKnowledge();
-        
-        //know how to calculate negotiation points   
-        if(_offerValue >= _goalValue)
-        {
-            _negotiationPoints = 1;
-        } else
-        {
-            _negotiationPoints = -1;
-        }
-
-
+        CalculateNegotiationPoints();
+        CalculateKarmaPoints();
 
         //what if i would compare the offer to goal value and calculate something like player "karma" for 
-            //selling something for much lower value than the market value
+        //selling something for much lower value than the market value
 
-        
 
         //send event to UI that negotiation score was updated
 
         //send event to UI that market knowledge score was updated
 
+    }
+
+    private void CalculateKarmaPoints()
+    {
+        Market market = _gameData.Market;
+
+
+        float goalValue = 0;
+
+        foreach (var goal in _goalStockItems)
+        {
+            float marketUnitPrice = market.GetStockItem(goal).UnitPrice;
+            goalValue += goal.Amount * marketUnitPrice;
+        }
+
+        float offerValue = 0;
+
+        foreach (var offer in _offerStockItems)
+        {
+            float marketUnitPrice = market.GetStockItem(offer).UnitPrice;
+            offerValue += offer.Amount * marketUnitPrice;
+        }
+
+        if(offerValue == goalValue)
+        {
+            _karmaPoints = 0;
+        } else if(offerValue > goalValue)
+        {
+            _karmaPoints = 1;
+        } else
+        {
+            _karmaPoints = -1;
+        }
+
+    }
+
+    private void CalculateNegotiationPoints()
+    {
+        if (_offerValue >= _goalValue)
+        {
+            _negotiationPoints = 1;
+        }
+        else
+        {
+            _negotiationPoints = -1;
+        }
     }
 
     private void CalculateMarketKnowledge()
@@ -116,6 +153,7 @@ public class Trade : MonoBehaviour
             offerValue += offer.Amount * marketUnitPrice;
         }
 
+
         _marketKnowledge = (offerValue / goalValue) > 1 ? (goalValue/ offerValue) : (offerValue / goalValue);
     }
 
@@ -126,6 +164,7 @@ public class Trade : MonoBehaviour
         GUI.Label(new Rect(10, 50, 200, 40), $"Player value: {_playerSelectedValue}", guiStyle);
         GUI.Label(new Rect(10, 90, 200, 40), $"Negotiation points: {_negotiationPoints}", guiStyle);
         GUI.Label(new Rect(10, 130, 200, 40), $"Market knowledge: {_marketKnowledge * 100} %", guiStyle);
+        GUI.Label(new Rect(10, 170, 200, 40), $"Karma points: {_karmaPoints}", guiStyle);
     }
 
     public void OnFinishTrade()
@@ -181,7 +220,7 @@ public class Trade : MonoBehaviour
             {
                 if (_sessionData.PlayerBuying) //selling merchant items
                 {
-                    Debug.LogError("Merchant should not value of his own items!");
+                    Debug.LogError($"Merchant {merchant.MerchantData.Identification} should not value of his own item {goal.ItemData.Identification}!");
                 } else //buying items from player
                 {
                     //player is telling me it cost "XX", but merchant market knowledge know the real value!
@@ -226,7 +265,7 @@ public class Trade : MonoBehaviour
                 }
                 else //buying items from player
                 {
-                    Debug.LogError("Merchant should not value of his own items!");
+                    Debug.LogError($"Merchant {merchant.MerchantData.Identification} should not value of his own item {offer.ItemData.Identification}!");
                 }
 
                 //this will store it right after first value proposal
