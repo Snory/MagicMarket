@@ -25,9 +25,9 @@ public class Trade : MonoBehaviour
     private float _offerValue = 0;
     private float _marketKnowledge = 0;
     private float _karmaPoints = 0;
+    private int _negotiationPoints;
 
     [Header("Test variables")]
-    [SerializeField] private int _negotiationPoints;
     [SerializeField] private float _merchantExpectedValue;
     [SerializeField] private float _playerSelectedValue;
 
@@ -71,10 +71,6 @@ public class Trade : MonoBehaviour
         CalculateMarketKnowledge();
         CalculateNegotiationPoints();
         CalculateKarmaPoints();
-
-        //what if i would compare the offer to goal value and calculate something like player "karma" for 
-        //selling something for much lower value than the market value
-
 
         //send event to UI that negotiation score was updated
 
@@ -177,13 +173,16 @@ public class Trade : MonoBehaviour
         //update market stock prices
         _gameData.Market.AddTransaction(_goalStockItems, _offerStockItems);
 
+
+
+
         //update merchant stock
 
         //update merchant market knowledge
 
         //update player stock
 
-        //update player reputation points
+        //update player reputation points and karma points
 
 
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
