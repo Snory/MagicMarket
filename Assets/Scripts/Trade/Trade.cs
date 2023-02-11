@@ -12,9 +12,9 @@ public class Trade : MonoBehaviour
     [SerializeField] private GameData _gameData;
     [SerializeField] private TradeSessionData _sessionData;
 
-    [SerializeField] private List<StockItem> _goalStockItems;
-    [SerializeField] private List<StockItem> _offerStockItems;
-        
+    [SerializeField] private List<TradeStockItem> _goalTradeStockItems;
+    [SerializeField] private List<TradeStockItem> _offerTradeStockItems;
+
     [Header("UI")]
     [SerializeField] private GeneralEvent GoalSelectionInitiated;
     [SerializeField] private GeneralEvent OfferSelectionInitiated;
@@ -32,6 +32,13 @@ public class Trade : MonoBehaviour
     [SerializeField] private float _playerSelectedValue;
 
 
+    private void Awake()
+    {
+        _offerTradeStockItems = new List<TradeStockItem>();
+        _goalTradeStockItems = new List<TradeStockItem>();
+
+    }
+
     private void Start()
     {
         RaiseGoalSelectionInitiated();
@@ -41,28 +48,28 @@ public class Trade : MonoBehaviour
 
     public void OnGoalStockItemChanged(EventArgs args)
     {
-        TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
-        StockItem stockItem = stockItemArgs.StockItem;
-
-        if (_goalStockItems.Contains(stockItem))
-        {
-            _goalStockItems.Remove(stockItem);
-        }
-
-        _goalStockItems.Add(stockItem);
+        StockItemChanged(args, _goalTradeStockItems);
     }
 
     public void OnOfferStockItemChanged(EventArgs args)
     {
-        TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
-        StockItem stockItem = stockItemArgs.StockItem;
+        StockItemChanged(args, _offerTradeStockItems);
+    }
 
-        if (_offerStockItems.Contains(stockItem))
+    private void StockItemChanged(EventArgs args, List<TradeStockItem> stockItems)
+    {
+        TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
+        TradeStockItem stockItem = new TradeStockItem(stockItemArgs.StockItem);
+        float marketUnitPrice = _gameData.Market.GetStockItem(stockItem).UnitPrice;
+        stockItem.MarketUnitPrice = marketUnitPrice;
+
+
+        if (stockItems.Contains(stockItem))
         {
-            _offerStockItems.Remove(stockItem);
+            stockItems.Remove(stockItem);
         }
 
-        _offerStockItems.Add(stockItem);
+        stockItems.Add(stockItem);
     }
 
     public void OnOfferConfirmed()
@@ -80,23 +87,19 @@ public class Trade : MonoBehaviour
 
     private void CalculateKarmaPoints()
     {
-        Market market = _gameData.Market;
-
 
         float goalValue = 0;
 
-        foreach (var goal in _goalStockItems)
+        foreach (var goal in _goalTradeStockItems)
         {
-            float marketUnitPrice = market.GetStockItem(goal).UnitPrice;
-            goalValue += goal.Amount * marketUnitPrice;
+            goalValue += goal.Amount * goal.MarketUnitPrice;
         }
 
         float offerValue = 0;
 
-        foreach (var offer in _offerStockItems)
+        foreach (var offer in _offerTradeStockItems)
         {
-            float marketUnitPrice = market.GetStockItem(offer).UnitPrice;
-            offerValue += offer.Amount * marketUnitPrice;
+            offerValue += offer.Amount * offer.MarketUnitPrice;
         }
 
         if(offerValue == goalValue)
@@ -126,29 +129,20 @@ public class Trade : MonoBehaviour
 
     private void CalculateMarketKnowledge()
     {
-        Market market = _gameData.Market;
-
-        if(market == null)
-        {
-            Debug.LogError("Missing market!");
-        }
 
         float goalValue = 0;
 
-        foreach (var goal in _goalStockItems)
+        foreach (var goal in _goalTradeStockItems)
         {
-            float marketUnitPrice = market.GetStockItem(goal).UnitPrice;
-            goalValue += goal.Amount * marketUnitPrice;
+            goalValue += goal.MarketTotalPrice;
         }
 
         float offerValue = 0;
 
-        foreach (var offer in _offerStockItems)
+        foreach (var offer in _offerTradeStockItems)
         {
-            float marketUnitPrice = market.GetStockItem(offer).UnitPrice;
-            offerValue += offer.Amount * marketUnitPrice;
+              offerValue += offer.MarketTotalPrice;
         }
-
 
         _marketKnowledge = (offerValue / goalValue) > 1 ? (goalValue/ offerValue) : (offerValue / goalValue);
     }
@@ -169,18 +163,28 @@ public class Trade : MonoBehaviour
         Player player = _sessionData.Player;
         player.ReputationPoints += _negotiationPoints >= 0 ? 1 : -1;
 
-
         //update market stock prices
-        _gameData.Market.AddTransaction(_goalStockItems, _offerStockItems);
-
-
-
+        _gameData.Market.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
 
         //update merchant stock
-
-        //update merchant market knowledge
-
+        if (_sessionData.PlayerBuying)
+        {
+            _sessionData.Merchant.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
+        }
+        else
+        {
+            _sessionData.Merchant.AddTransaction(_offerTradeStockItems, _goalTradeStockItems);
+        }
+        
         //update player stock
+        if (_sessionData.PlayerBuying)
+        {
+            _sessionData.Player.AddTransaction(_offerTradeStockItems, _goalTradeStockItems);
+        }
+        else
+        {
+            _sessionData.Player.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
+        }
 
         //update player reputation points and karma points
 
@@ -209,7 +213,7 @@ public class Trade : MonoBehaviour
         Merchant merchant = _sessionData.Merchant;
         _goalValue = 0;
 
-        foreach (var goal in _goalStockItems)
+        foreach (var goal in _goalTradeStockItems)
         {
             float value = 0;
 
@@ -224,9 +228,8 @@ public class Trade : MonoBehaviour
                 {
                     //player is telling me it cost "XX", but merchant market knowledge know the real value!
                     value = Random.Range(goal.UnitPrice - (goal.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), goal.UnitPrice + (goal.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                    goal.PlayerUnitPrice = goal.UnitPrice;
                 }
-
-
                 //this will store it right after first value proposal
                     //i will leave it here, it could create interesting situations
                 merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = goal.ItemData, UnitPrice = value });
@@ -236,8 +239,10 @@ public class Trade : MonoBehaviour
                 value = itemMarketKnowledge.UnitPrice;
             }
 
-
             _goalValue += goal.Amount * value;
+
+            goal.MerchantUnitPrice = value;
+
         }
 
         _merchantExpectedValue = _goalValue;
@@ -248,7 +253,7 @@ public class Trade : MonoBehaviour
         Merchant merchant = _sessionData.Merchant;
         _offerValue = 0;
 
-        foreach (var offer in _offerStockItems)
+        foreach (var offer in _offerTradeStockItems)
         {
             float value = 0;
 
@@ -261,6 +266,7 @@ public class Trade : MonoBehaviour
                 {
                     //player is telling me it cost "XX", but merchant market knowledge know the real value!
                     value = Random.Range(offer.UnitPrice - (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.UnitPrice + (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                    offer.PlayerUnitPrice = offer.UnitPrice;
                 }
                 else //buying items from player
                 {
@@ -278,6 +284,7 @@ public class Trade : MonoBehaviour
             }
 
             _offerValue += offer.Amount * value;
+            offer.MerchantUnitPrice = value;
         }
 
         _playerSelectedValue = _offerValue;

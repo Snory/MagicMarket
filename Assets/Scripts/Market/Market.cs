@@ -15,15 +15,19 @@ public class Market
     /// </summary>
     /// <param name="goals"></param>
     /// <param name="offers"></param>
-    public void AddTransaction(List<StockItem> goals, List<StockItem> offers)
+    public void AddTransaction(List<TradeStockItem> goals, List<TradeStockItem> offers)
     {
 
-        float totalGoalValue = goals.Sum(g => g.TotalPrice);
-        float totalOfferValue = offers.Sum(o => o.TotalPrice);
+        float totalGoalTradeMarketPrice = goals.Sum(g => g.MarketTotalPrice);
+        float totalOfferTradeMarketPrice = offers.Sum(o => o.MarketTotalPrice);
 
         foreach (var goal in goals)
         {
-            float newValue = (goal.TotalPrice / totalGoalValue) * totalOfferValue;
+            float marketUnitPrice = goal.MarketTotalPrice;
+            float marketTotalPrice = marketUnitPrice * goal.Amount;
+
+            float newValue = (marketTotalPrice / totalGoalTradeMarketPrice) * totalOfferTradeMarketPrice;
+
             AddStockItem(new StockItem
             {
                 ItemData = goal.ItemData,
@@ -38,7 +42,11 @@ public class Market
 
         foreach (var offer in offers)
         {
-            float newValue = (offer.TotalPrice / totalOfferValue) * totalGoalValue;
+
+            float marketUnitPrice = offer.MarketUnitPrice;
+            float marketTotalPrice = marketUnitPrice * offer.Amount;
+
+            float newValue = (marketTotalPrice / totalOfferTradeMarketPrice) * totalGoalTradeMarketPrice;
             AddStockItem(new StockItem
             {
                 ItemData = offer.ItemData,
