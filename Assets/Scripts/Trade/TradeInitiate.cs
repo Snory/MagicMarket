@@ -10,25 +10,10 @@ public class TradeInitiate : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TradeSessionData _tradeSessionData;
 
-    /*
-     * Should should PlayerStock as he will be offering items to sell in order to buy from merchant
-    */
-    public void OnBuyButton()
+    public void OnTradeButton()
     {
         _tradeSessionData.Player = _player;
         _tradeSessionData.Merchant = _selectedMerchant;
-        _tradeSessionData.PlayerBuying = true;
-        InitiateTrade();
-    }
-
-    /*
-     * Should should MerchantStock as he will be offering items to sell in order to buy from player
-    */
-    public void OnSellButton()
-    {
-        _tradeSessionData.Player = _player;
-        _tradeSessionData.Merchant = _selectedMerchant;
-        _tradeSessionData.PlayerBuying = false;
         InitiateTrade();
     }
 
