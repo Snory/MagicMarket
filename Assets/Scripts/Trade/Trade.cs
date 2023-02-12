@@ -257,8 +257,4 @@ public class Trade : MonoBehaviour
 
         _gameData = gameDataEventArgs.GameData;
     }
-
-
-
-
 }

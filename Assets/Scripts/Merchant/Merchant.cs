@@ -92,6 +92,13 @@ public class Merchant
         currentStockItem.TotalTradePower -= item.TotalTradePower;
         currentStockItem.Amount -= item.Amount;
         currentStockItem.UnitTradePower = currentStockItem.TotalTradePower / currentStockItem.Amount;
+
+
+        if (currentStockItem.Amount <= 0)
+        {
+            StockItems.Remove(currentStockItem);
+        }
+
     }
 
     public StockItemMarketKnowledge GetItemMarketKnowledge(StockItemBase stockItem)
