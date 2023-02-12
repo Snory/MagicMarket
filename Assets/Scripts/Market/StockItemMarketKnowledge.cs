@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 [Serializable]
 public class StockItemMarketKnowledge : StockItemBase
 {
-    public float UnitPrice;
+    public float UnitTradePower;
 }

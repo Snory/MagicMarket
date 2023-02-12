@@ -27,22 +27,22 @@ public class Player
                 ItemQuality = soldItem.ItemQuality,
                 ItemRarity = soldItem.ItemRarity,
                 Amount = soldItem.Amount,
-                TotalPrice = soldItem.TotalPrice,
-                UnitPrice = soldItem.UnitPrice
+                TotalTradePower = soldItem.TotalTradePower,
+                UnitTradePower = soldItem.UnitTradePower
             });
         }
 
         foreach (var boughtItem in bought)
         {
-            float newValue = (boughtItem.TotalPrice / totalBoughtPrice) * totalSoldPrice;
+            float newValue = (boughtItem.TotalTradePower / totalBoughtPrice) * totalSoldPrice;
             StockItem newItem = new StockItem
             {
                 ItemData = boughtItem.ItemData,
                 ItemQuality = boughtItem.ItemQuality,
                 ItemRarity = boughtItem.ItemRarity,
                 Amount = boughtItem.Amount,
-                TotalPrice = boughtItem.Amount * newValue,
-                UnitPrice = newValue
+                TotalTradePower = boughtItem.Amount * newValue,
+                UnitTradePower = newValue
             };
 
             AddStockItem(newItem);
@@ -59,9 +59,9 @@ public class Player
         }
         else
         {
-            currentStockItem.TotalPrice += item.TotalPrice;
+            currentStockItem.TotalTradePower += item.TotalTradePower;
             currentStockItem.Amount += item.Amount;
-            currentStockItem.UnitPrice = currentStockItem.TotalPrice / currentStockItem.Amount;
+            currentStockItem.UnitTradePower = currentStockItem.TotalTradePower / currentStockItem.Amount;
         }
     }
 
@@ -69,9 +69,9 @@ public class Player
     {
         StockItem currentStockItem = StockItems.Where(i => i == item).FirstOrDefault();
 
-        currentStockItem.TotalPrice -= item.TotalPrice;
+        currentStockItem.TotalTradePower -= item.TotalTradePower;
         currentStockItem.Amount -= item.Amount;
-        currentStockItem.UnitPrice = currentStockItem.TotalPrice / currentStockItem.Amount;
+        currentStockItem.UnitTradePower = currentStockItem.TotalTradePower / currentStockItem.Amount;
 
     }
 

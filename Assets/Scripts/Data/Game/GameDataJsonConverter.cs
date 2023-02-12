@@ -35,8 +35,8 @@ public class GameDataJsonConverter : JsonConverter
                                     Identification = (string)s["ItemData"]["Identification"]
                                 },
                                 Amount = (float)s["Amount"],
-                                UnitPrice = (float)s["UnitPrice"],
-                                TotalPrice = (float)s["TotalPrice"],
+                                UnitTradePower = (float)s["UnitTradePower"],
+                                TotalTradePower = (float)s["TotalTradePower"],
                                 ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
                                 ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
                             }).ToList() : new List<StockItem>(),
@@ -47,7 +47,7 @@ public class GameDataJsonConverter : JsonConverter
                                 {
                                     Identification = (string)s["ItemData"]["Identification"]
                                 },
-                                UnitPrice = (float)s["UnitPrice"],
+                                UnitTradePower = (float)s["UnitTradePower"],
                                 ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
                                 ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
                             }).ToList() : new List<StockItemMarketKnowledge>()
@@ -63,8 +63,8 @@ public class GameDataJsonConverter : JsonConverter
                             Identification = (string)s["ItemData"]["Identification"]
                         },
                         Amount = (float)s["Amount"],
-                        UnitPrice = (float)s["UnitPrice"],
-                        TotalPrice = (float)s["TotalPrice"],
+                        UnitTradePower = (float)s["UnitTradePower"],
+                        TotalTradePower = (float)s["TotalTradePower"],
                         ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
                         ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
                     }).ToList() : new List<StockItem>()
@@ -79,8 +79,8 @@ public class GameDataJsonConverter : JsonConverter
                             Identification = (string)s["ItemData"]["Identification"]
                         },
                         Amount = (float)s["Amount"],
-                        UnitPrice = (float)s["UnitPrice"],
-                        TotalPrice = (float)s["TotalPrice"],
+                        UnitTradePower = (float)s["UnitTradePower"],
+                        TotalTradePower = (float)s["TotalTradePower"],
                         ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
                         ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
                     }).ToList() : new List<StockItem>()
@@ -116,8 +116,8 @@ public class GameDataJsonConverter : JsonConverter
                 stockItemObject.Add("ItemData", itemData);
 
                 stockItemObject.Add("Amount", stockItem.Amount);
-                stockItemObject.Add("UnitPrice", stockItem.UnitPrice);
-                stockItemObject.Add("TotalPrice", stockItem.TotalPrice);
+                stockItemObject.Add("UnitTradePower", stockItem.UnitTradePower);
+                stockItemObject.Add("TotalTradePower", stockItem.TotalTradePower);
                 stockItemObject.Add("Quality", stockItem.ItemQuality.ToString());
                 stockItemObject.Add("Rarity", stockItem.ItemRarity.ToString());
                 merchantStockitems.Add(stockItemObject);
@@ -132,7 +132,7 @@ public class GameDataJsonConverter : JsonConverter
 
                 JObject itemmarketKnowledgeObject = new JObject();
                 itemmarketKnowledgeObject.Add("ItemData", itemData);
-                itemmarketKnowledgeObject.Add("UnitPrice", itemMarketKnowledge.UnitPrice);
+                itemmarketKnowledgeObject.Add("UnitTradePower", itemMarketKnowledge.UnitTradePower);
                 itemmarketKnowledgeObject.Add("Quality", itemMarketKnowledge.ItemQuality.ToString());
                 itemmarketKnowledgeObject.Add("Rarity", itemMarketKnowledge.ItemRarity.ToString());
                 merchantMarketItemKnowledge.Add(itemmarketKnowledgeObject);
@@ -159,8 +159,8 @@ public class GameDataJsonConverter : JsonConverter
             stockItemObject.Add("ItemData", itemData);
 
             stockItemObject.Add("Amount", stockItem.Amount);
-            stockItemObject.Add("UnitPrice", stockItem.UnitPrice);
-            stockItemObject.Add("TotalPrice", stockItem.TotalPrice);
+            stockItemObject.Add("UnitTradePower", stockItem.UnitTradePower);
+            stockItemObject.Add("TotalTradePower", stockItem.TotalTradePower);
             stockItemObject.Add("Quality", stockItem.ItemQuality.ToString());
             stockItemObject.Add("Rarity", stockItem.ItemRarity.ToString());
             playerStockItems.Add(stockItemObject);
@@ -180,8 +180,8 @@ public class GameDataJsonConverter : JsonConverter
             stockItemObject.Add("ItemData", itemData);
 
             stockItemObject.Add("Amount", stockItem.Amount);
-            stockItemObject.Add("UnitPrice", stockItem.UnitPrice);
-            stockItemObject.Add("TotalPrice", stockItem.TotalPrice);
+            stockItemObject.Add("UnitTradePower", stockItem.UnitTradePower);
+            stockItemObject.Add("TotalTradePower", stockItem.TotalTradePower);
             stockItemObject.Add("Quality", stockItem.ItemQuality.ToString());
             stockItemObject.Add("Rarity", stockItem.ItemRarity.ToString());
             marketStockItems.Add(stockItemObject);

@@ -60,7 +60,7 @@ public class Trade : MonoBehaviour
     {
         TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
         TradeStockItem stockItem = new TradeStockItem(stockItemArgs.StockItem);
-        float marketUnitPrice = _gameData.Market.GetStockItem(stockItem).UnitPrice;
+        float marketUnitPrice = _gameData.Market.GetStockItem(stockItem).UnitTradePower;
         stockItem.MarketUnitPrice = marketUnitPrice;
 
 
@@ -198,7 +198,7 @@ public class Trade : MonoBehaviour
         {
 
             StockItemMarketKnowledge itemMarketKnowledge = merchant.GetItemMarketKnowledge(goal);
-            float value = itemMarketKnowledge.UnitPrice;
+            float value = itemMarketKnowledge.UnitTradePower;
             _goalValue += goal.Amount * value;
             goal.MerchantUnitPrice = value;
         }
@@ -222,18 +222,18 @@ public class Trade : MonoBehaviour
 
 
                 //player is telling me it cost "XX", but merchant market knowledge know the real value!
-                value = Random.Range(offer.UnitPrice - (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.UnitPrice + (offer.UnitPrice * (1 - merchant.CurrentGeneralMarketKnowledge)));
-                offer.PlayerUnitPrice = offer.UnitPrice;
+                value = Random.Range(offer.UnitTradePower - (offer.UnitTradePower * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.UnitTradePower + (offer.UnitTradePower * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                offer.PlayerUnitPrice = offer.UnitTradePower;
 
 
                 //this will store it right after first value proposal
                 //i will leave it here, it could create interesting situations
-                merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = offer.ItemData, UnitPrice = value });
+                merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = offer.ItemData, UnitTradePower = value });
 
             }
             else
             {
-                value = itemMarketKnowledge.UnitPrice;
+                value = itemMarketKnowledge.UnitTradePower;
             }
 
             _offerValue += offer.Amount * value;

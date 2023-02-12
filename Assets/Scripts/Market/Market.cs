@@ -34,8 +34,8 @@ public class Market
                 ItemQuality = goal.ItemQuality,
                 ItemRarity = goal.ItemRarity,
                 Amount = goal.Amount,
-                TotalPrice = goal.Amount * newValue,
-                UnitPrice = newValue
+                TotalTradePower = goal.Amount * newValue,
+                UnitTradePower = newValue
             });
            
         }
@@ -53,8 +53,8 @@ public class Market
                 ItemQuality = offer.ItemQuality,
                 ItemRarity = offer.ItemRarity,
                 Amount = offer.Amount,
-                TotalPrice = offer.Amount * newValue,
-                UnitPrice = newValue
+                TotalTradePower = offer.Amount * newValue,
+                UnitTradePower = newValue
             });
         }
 
@@ -69,9 +69,9 @@ public class Market
             StockItems.Add(item);
         } else
         {
-            currentStockItem.TotalPrice += item.TotalPrice;
+            currentStockItem.TotalTradePower += item.TotalTradePower;
             currentStockItem.Amount += item.Amount;
-            currentStockItem.UnitPrice = currentStockItem.TotalPrice / currentStockItem.Amount;
+            currentStockItem.UnitTradePower = currentStockItem.TotalTradePower / currentStockItem.Amount;
         }
     }
 

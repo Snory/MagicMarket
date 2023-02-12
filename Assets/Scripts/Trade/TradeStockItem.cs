@@ -19,8 +19,8 @@ public class TradeStockItem : StockItem
     public TradeStockItem(StockItem item)
     {
         Amount = item.Amount;
-        TotalPrice = item.TotalPrice;
-        UnitPrice = item.UnitPrice;
+        TotalTradePower = item.TotalTradePower;
+        UnitTradePower = item.UnitTradePower;
         ItemRarity = item.ItemRarity;
         ItemQuality = item.ItemQuality;
         ItemData = item.ItemData;

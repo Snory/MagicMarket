@@ -95,8 +95,8 @@ public class TradeStockItemSelectionUI : MonoBehaviour
         {
             ItemData = selectedStockItem.ItemData,
             Amount = _amountSelectionSlider.value,
-            UnitPrice = selectedStockItem.UnitPrice,
-            TotalPrice = _amountSelectionSlider.value * selectedStockItem.UnitPrice,
+            UnitTradePower = selectedStockItem.UnitTradePower,
+            TotalTradePower = _amountSelectionSlider.value * selectedStockItem.UnitTradePower,
             ItemQuality = selectedStockItem.ItemQuality,
             ItemRarity = selectedStockItem.ItemRarity
         };
