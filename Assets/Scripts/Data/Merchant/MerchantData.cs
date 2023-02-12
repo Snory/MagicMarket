@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class MerchantData : Identity
@@ -12,4 +10,8 @@ public class MerchantData : Identity
     public string Description;
     public string SpriteName;
     public float GeneralMarketKnowledge;
+    public List<ItemData> ItemsInterest;
+
+
+
 }

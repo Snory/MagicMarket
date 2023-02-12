@@ -13,14 +13,52 @@ MonoBehaviour:
   m_Name: MerchantDataRepository
   m_EditorClassIdentifier: 
   _entries:
-  - Identification: 976a1e77-f36c-4510-8084-c3a90220b50e
-    Name: RobinTheWeaver
-    Description: He came from the underworld to weave your shit!
+  - Identification: 87e8caa5-6c47-4b4c-8887-87b5c55e5c5a
+    Name: GeminiTheEnchanter
+    Description: Twin enchanters with a flair for the mystical
     SpriteName: merchant1
-  - Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
-    Name: BarboraTheQueen
-    Description: You are just a slave to me!
+    GeneralMarketKnowledge: 0.5
+  - Identification: 14a9e66b-932b-4f74-8816-ab92a15ed7f9
+    Name: TheOracle
+    Description: Possessing ancient knowledge, the oracle can help you see into the
+      future
     SpriteName: merchant2
+    GeneralMarketKnowledge: 0.5
+  - Identification: 05ffb0e6-17c8-4599-9c48-b67f23b10c17
+    Name: ZephyrTheWindMage
+    Description: Master of the winds, Zephyr can help you harness their power
+    SpriteName: merchant3
+    GeneralMarketKnowledge: 0.5
+  - Identification: b3c3ab14-e0f2-4b11-aee6-9fa25ddc1f7f
+    Name: NirvanaTheAlchemist
+    Description: With her mastery of alchemy, Nirvana can turn base materials into
+      gold
+    SpriteName: merchant4
+    GeneralMarketKnowledge: 0.5
+  - Identification: a68a9c0f-ed67-40a9-b07f-03ece096f159
+    Name: MystiqueTheIllusionist
+    Description: With her mastery of illusion, Mystique can make the impossible seem
+      possible
+    SpriteName: merchant5
+    GeneralMarketKnowledge: 0.5
+  - Identification: c7d89eea-54af-4dce-afd3-ed3f6b24a10b
+    Name: LunarTheMoonWitch
+    Description: With her mastery of lunar magic, Lunar can help you tap into the
+      power of the moon
+    SpriteName: merchant6
+    GeneralMarketKnowledge: 0.5
+  - Identification: f15e33f8-d97e-46f7-9dc2-ccb8bc2b3f47
+    Name: ArcadiaTheNatureMage
+    Description: With her mastery of nature magic, Arcadia can help you harness the
+      power of the earth
+    SpriteName: merchant7
+    GeneralMarketKnowledge: 0.5
+  - Identification: e0a1b7a2-4c4e-4b5f-9184-59c1d639b7e7
+    Name: AuroraTheLightMage
+    Description: With her mastery of light magic, Aurora can help you harness the
+      power of the sun
+    SpriteName: merchant8
+    GeneralMarketKnowledge: 0.5
   _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
   _repositoryFolderPath:
   - Resources

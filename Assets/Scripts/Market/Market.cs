@@ -29,14 +29,14 @@ public class Market
             float newValue = (marketTotalPrice / totalGoalTradeMarketPrice) * totalOfferTradeMarketPrice;
 
             AddStockItem(new StockItem
-            {
-                ItemData = goal.ItemData,
-                ItemQuality = goal.ItemQuality,
-                ItemRarity = goal.ItemRarity,
-                Amount = goal.Amount,
-                TotalTradePower = goal.Amount * newValue,
-                UnitTradePower = newValue
-            });
+            (
+                goal.ItemData,
+                goal.ItemQuality,
+                goal.ItemRarity,
+                goal.Amount,
+                newValue,
+                goal.Amount * newValue
+            ));
            
         }
 
@@ -48,25 +48,25 @@ public class Market
 
             float newValue = (marketTotalPrice / totalOfferTradeMarketPrice) * totalGoalTradeMarketPrice;
             AddStockItem(new StockItem
-            {
-                ItemData = offer.ItemData,
-                ItemQuality = offer.ItemQuality,
-                ItemRarity = offer.ItemRarity,
-                Amount = offer.Amount,
-                TotalTradePower = offer.Amount * newValue,
-                UnitTradePower = newValue
-            });
+            (
+                offer.ItemData,
+                offer.ItemQuality,
+                offer.ItemRarity,
+                offer.Amount,
+                newValue,
+                offer.Amount * newValue
+            ));
         }
 
     }
 
-    private void AddStockItem(StockItem item)
+    public void AddStockItem(StockItem item)
     {
         StockItem currentStockItem = StockItems.Where(i => i == item).FirstOrDefault();
 
         if(currentStockItem == null)
         {
-            StockItems.Add(item);
+            StockItems.Add(new StockItem(item));
         } else
         {
             currentStockItem.TotalTradePower += item.TotalTradePower;

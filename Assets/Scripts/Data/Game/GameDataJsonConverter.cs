@@ -29,61 +29,61 @@ public class GameDataJsonConverter : JsonConverter
                         CurrentGeneralMarketKnowledge = (float)m["CurrentGeneralMarketKnowledge"],
                         StockItems = m["MerchantStockItems"] != null && m["MerchantStockItems"].HasValues
                             ? ((JArray)m["MerchantStockItems"]).Select(s => new StockItem
-                            {
-                                ItemData = new ItemData
+                            (
+                                new ItemData
                                 {
                                     Identification = (string)s["ItemData"]["Identification"]
                                 },
-                                Amount = (float)s["Amount"],
-                                UnitTradePower = (float)s["UnitTradePower"],
-                                TotalTradePower = (float)s["TotalTradePower"],
-                                ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
-                                ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
-                            }).ToList() : new List<StockItem>(),
+                                (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                                (float)s["Amount"],
+                                (float)s["UnitTradePower"],
+                                (float)s["TotalTradePower"]
+                            )).ToList() : new List<StockItem>(),
                         ItemMarketKnowledge = m["MarketItemMarketKnowledge"] != null && m["MarketItemMarketKnowledge"].HasValues
                             ? ((JArray)m["MarketItemMarketKnowledge"]).Select(s => new StockItemMarketKnowledge
-                            {
-                                ItemData = new ItemData
+                            (
+                                new ItemData
                                 {
                                     Identification = (string)s["ItemData"]["Identification"]
                                 },
-                                UnitTradePower = (float)s["UnitTradePower"],
-                                ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
-                                ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
-                            }).ToList() : new List<StockItemMarketKnowledge>()
+                                (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                                (float)s["UnitTradePower"]
+                            )).ToList() : new List<StockItemMarketKnowledge>()
 
                     }).ToList() : new List<Merchant>(),
             Player = new Player
             {
                 StockItems = input["Player"]["PlayerStockItems"] != null && input["Player"]["PlayerStockItems"].HasValues
                     ? ((JArray)input["Player"]["PlayerStockItems"]).Select(s => new StockItem
-                    {
-                        ItemData = new ItemData
+                    (
+                        new ItemData
                         {
                             Identification = (string)s["ItemData"]["Identification"]
                         },
-                        Amount = (float)s["Amount"],
-                        UnitTradePower = (float)s["UnitTradePower"],
-                        TotalTradePower = (float)s["TotalTradePower"],
-                        ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
-                        ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
-                    }).ToList() : new List<StockItem>()
+                        (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                        (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                        (float)s["Amount"],
+                        (float)s["UnitTradePower"],
+                        (float)s["TotalTradePower"]
+                    )).ToList() : new List<StockItem>()
             },
             Market = new Market
             {
                 StockItems = input["Market"]["MarketStockItems"] != null && input["Market"]["MarketStockItems"].HasValues
                     ? ((JArray)input["Market"]["MarketStockItems"]).Select(s => new StockItem
-                    {
-                        ItemData = new ItemData
+                    (
+                        new ItemData
                         {
                             Identification = (string)s["ItemData"]["Identification"]
                         },
-                        Amount = (float)s["Amount"],
-                        UnitTradePower = (float)s["UnitTradePower"],
-                        TotalTradePower = (float)s["TotalTradePower"],
-                        ItemQuality = (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
-                        ItemRarity = (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"])
-                    }).ToList() : new List<StockItem>()
+                        (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                        (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                        (float)s["Amount"],
+                        (float)s["UnitTradePower"],
+                        (float)s["TotalTradePower"]
+                    )).ToList() : new List<StockItem>()
             }
         };
 

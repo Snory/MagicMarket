@@ -92,14 +92,14 @@ public class TradeStockItemSelectionUI : MonoBehaviour
         StockItem selectedStockItem = _tradeStockItemButton.GetStockItem();
 
         StockItem stockItem = new StockItem
-        {
-            ItemData = selectedStockItem.ItemData,
-            Amount = _amountSelectionSlider.value,
-            UnitTradePower = selectedStockItem.UnitTradePower,
-            TotalTradePower = _amountSelectionSlider.value * selectedStockItem.UnitTradePower,
-            ItemQuality = selectedStockItem.ItemQuality,
-            ItemRarity = selectedStockItem.ItemRarity
-        };
+        (
+            selectedStockItem.ItemData,
+            selectedStockItem.ItemQuality,
+            selectedStockItem.ItemRarity,
+            _amountSelectionSlider.value,
+            selectedStockItem.UnitTradePower,
+            _amountSelectionSlider.value * selectedStockItem.UnitTradePower
+        );
 
         _tradeItemStockChanged.Raise(new TradeStockItemEventArgs(stockItem));
         _tradeStockItemButton.SetAmountSelected((int)_amountSelectionSlider.value);

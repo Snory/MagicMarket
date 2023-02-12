@@ -1770,11 +1770,8 @@ MonoBehaviour:
     Market:
       StockItems: []
   _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
-  _goalStockItems: []
-  _offerStockItems: []
   GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
   OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
-  _negotiationPoints: 0
   _merchantExpectedValue: 0
   _playerSelectedValue: 0
 --- !u!114 &647174443
@@ -3014,7 +3011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Its a deal!
+  m_text: Finish trade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

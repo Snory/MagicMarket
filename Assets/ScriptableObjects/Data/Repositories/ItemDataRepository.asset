@@ -13,39 +13,134 @@ MonoBehaviour:
   m_Name: ItemDataRepository
   m_EditorClassIdentifier: 
   _entries:
+  - Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+    Name: Eye of newt
+    Description: A small, beady eye that is commonly used in potions and spells
+    Type: 1
+    ItemRarityProbabilities:
+    - Rarity: 0
+      Probability: 0.7
+    - Rarity: 1
+      Probability: 0.2
+    - Rarity: 2
+      Probability: 0.1
+    ItemQualityProbabilities:
+    - Quality: 0
+      Probability: 0.7
+    - Quality: 1
+      Probability: 0.2
+    - Quality: 2
+      Probability: 0.1
+    SpriteName: Icons_12
+  - Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+    Name: Dragon's Breath
+    Description: A rare ingredient that is said to have come from the breath of a
+      dragon. It is said to add power to spells and potions
+    Type: 1
+    ItemRarityProbabilities:
+    - Rarity: 0
+      Probability: 0.1
+    - Rarity: 1
+      Probability: 0.2
+    - Rarity: 2
+      Probability: 0.7
+    ItemQualityProbabilities:
+    - Quality: 0
+      Probability: 0.1
+    - Quality: 1
+      Probability: 0.2
+    - Quality: 2
+      Probability: 0.7
+    SpriteName: Icons_1
   - Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
-    Name: RobinovaNoha
-    Description: 
+    Name: Wolf's Fang
+    Description: The fang of a powerful wolf, used in many spells and potions to
+      bring strength and power to the caster.
     Type: 1
     ItemRarityProbabilities:
     - Rarity: 0
-      Probability: 1
+      Probability: 0.7
+    - Rarity: 1
+      Probability: 0.2
     ItemQualityProbabilities:
     - Quality: 0
-      Probability: 1
-    SpriteName: Carrot
-  - Identification: 74b3203c-c3cd-4c28-b8fb-22a40634f192
-    Name: BaryNohy
-    Description: 
+      Probability: 0.7
+    - Quality: 1
+      Probability: 0.2
+    SpriteName: Icons_273
+  - Identification: 2b4a4e4d-4a57-4db8-846d-fc3a3dd9b52d
+    Name: Mandrake Root
+    Description: A rare root that can be used to make powerful spells and curses.
     Type: 1
     ItemRarityProbabilities:
     - Rarity: 0
-      Probability: 1
+      Probability: 0.3
+    - Rarity: 1
+      Probability: 0.4
+    - Rarity: 2
+      Probability: 0.3
     ItemQualityProbabilities:
     - Quality: 0
-      Probability: 1
-    SpriteName: Garlic
-  - Identification: 59bb3a33-98da-46bd-927b-c9d54038fabc
-    Name: JeldovaNoha
-    Description: 
+      Probability: 0.4
+    - Quality: 1
+      Probability: 0.4
+    - Quality: 2
+      Probability: 0.2
+    SpriteName: Icons_180
+  - Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+    Name: Phoenix Feather
+    Description: The feather of a mythical bird said to be able to control fire.
     Type: 1
     ItemRarityProbabilities:
     - Rarity: 0
-      Probability: 1
+      Probability: 0.8
+    - Rarity: 1
+      Probability: 0.15
+    - Rarity: 2
+      Probability: 0.05
     ItemQualityProbabilities:
     - Quality: 0
-      Probability: 1
-    SpriteName: Corn
+      Probability: 0.2
+    - Quality: 1
+      Probability: 0.5
+    - Quality: 2
+      Probability: 0.3
+    SpriteName: Icons_274
+  - Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+    Name: Celestial Dust
+    Description: A rare and powerful ingredient that comes from the ashes of fallen
+      stars. It is said to grant immense power to those who use it in their spells
+      and rituals.
+    Type: 1
+    ItemRarityProbabilities:
+    - Rarity: 2
+      Probability: 0.3
+    - Rarity: 1
+      Probability: 0.5
+    - Rarity: 0
+      Probability: 0.2
+    ItemQualityProbabilities:
+    - Quality: 2
+      Probability: 0.3
+    - Quality: 1
+      Probability: 0.5
+    - Quality: 0
+      Probability: 0.2
+    SpriteName: Icons_245
+  - Identification: c2eb6db5-04bb-49a3-b7f1-da23c4c3dfff
+    Name: 
+    Description: 
+    Type: 0
+    ItemRarityProbabilities: []
+    ItemQualityProbabilities: []
+    SpriteName: 
+  - Identification: b3a16387-4af0-44e5-a52f-553045144f44
+    Name: 
+    Description: 
+    Type: 0
+    ItemRarityProbabilities: []
+    ItemQualityProbabilities: []
+    SpriteName: 
   _repositoryDataPath: D:/Projects/UnityProjects/UnityProjects/MagicMarket/Assets
   _repositoryFolderPath:
   - Resources

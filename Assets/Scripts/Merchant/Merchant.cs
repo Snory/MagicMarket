@@ -24,54 +24,52 @@ public class Merchant
             float newValue = (soldItem.MerchantTotalPrice / totalSoldPrice) * totalBoughtPrice;
 
             UpdateStockItemKnowledge(new StockItem
-            {
-                ItemData = soldItem.ItemData,
-                ItemQuality = soldItem.ItemQuality,
-                ItemRarity = soldItem.ItemRarity,
-                Amount = soldItem.Amount,
-                TotalTradePower = soldItem.Amount * newValue,
-                UnitTradePower = newValue
-            }
+            (
+                soldItem.ItemData,
+                soldItem.ItemQuality,
+                soldItem.ItemRarity,
+                soldItem.Amount,
+                newValue,
+                soldItem.Amount * newValue
+            )
             );
 
             RemoveStockItem(new StockItem
-            {
-                ItemData = soldItem.ItemData,
-                ItemQuality = soldItem.ItemQuality,
-                ItemRarity = soldItem.ItemRarity,
-                Amount = soldItem.Amount,
-                TotalTradePower = soldItem.TotalTradePower,
-                UnitTradePower = soldItem.UnitTradePower
-            });
+            (
+                soldItem.ItemData,
+                soldItem.ItemQuality,
+                soldItem.ItemRarity,
+                soldItem.Amount,
+                soldItem.UnitTradePower,
+                soldItem.TotalTradePower
+            ));
         }
-
-
 
         foreach (var boughtItem in bought)
         {
             float newValue = (boughtItem.TotalTradePower / totalBoughtPrice) * totalSoldPrice;
             StockItem newItem = new StockItem
-            {
-                ItemData = boughtItem.ItemData,
-                ItemQuality = boughtItem.ItemQuality,
-                ItemRarity = boughtItem.ItemRarity,
-                Amount = boughtItem.Amount,
-                TotalTradePower = boughtItem.Amount * newValue,
-                UnitTradePower = newValue
-            };
+            (
+                boughtItem.ItemData,
+                boughtItem.ItemQuality,
+                boughtItem.ItemRarity,
+                boughtItem.Amount,
+                newValue,
+                boughtItem.Amount * newValue
+            );
 
             AddStockItem(newItem);
             UpdateStockItemKnowledge(newItem);
         }
     }
 
-    private void AddStockItem(StockItem item)
+    public void AddStockItem(StockItem item)
     {
         StockItem currentStockItem = StockItems.Where(i => i == item).FirstOrDefault();
 
         if (currentStockItem == null)
         {
-            StockItems.Add(item);
+            StockItems.Add(new StockItem(item));
         }
         else
         {
@@ -94,7 +92,6 @@ public class Merchant
         currentStockItem.TotalTradePower -= item.TotalTradePower;
         currentStockItem.Amount -= item.Amount;
         currentStockItem.UnitTradePower = currentStockItem.TotalTradePower / currentStockItem.Amount;
-
     }
 
     public StockItemMarketKnowledge GetItemMarketKnowledge(StockItemBase stockItem)

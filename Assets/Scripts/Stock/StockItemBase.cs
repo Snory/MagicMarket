@@ -10,6 +10,13 @@ public abstract class StockItemBase : IEquatable<StockItemBase>
     public ItemQuality ItemQuality;
     public ItemRarity ItemRarity;
 
+    protected StockItemBase(ItemData itemData, ItemQuality itemQuality, ItemRarity itemRarity)
+    {
+        ItemData = itemData;
+        ItemQuality = itemQuality;
+        ItemRarity = itemRarity;
+    }
+
     public bool Equals(StockItemBase other)
     {
         if (other == null)

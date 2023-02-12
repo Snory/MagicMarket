@@ -228,7 +228,7 @@ public class Trade : MonoBehaviour
 
                 //this will store it right after first value proposal
                 //i will leave it here, it could create interesting situations
-                merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge { ItemData = offer.ItemData, UnitTradePower = value });
+                merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge ( offer.ItemData, offer.ItemQuality, offer.ItemRarity, value));
 
             }
             else

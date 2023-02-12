@@ -20,6 +20,11 @@ public abstract class Repository<T> : ScriptableObject, IPersistable, ICreatable
         _entries.Add(entry);
     }
 
+    public List<T> GetEntries()
+    {
+        return _entries;
+    }
+
     public virtual T GetEntry(string identification)
     {
         return _entries.Where(t => t.Identification == identification).FirstOrDefault();

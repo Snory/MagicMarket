@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,20 +37,128 @@ public class GameManager : MonoBehaviour
     [ContextMenu("New game")]
     public void NewGame()
     {
-        _gameData = new GameData();
+        GameData gameData = new GameData();
+        gameData.Name = $"NewGame_1";
 
-        //load merchant and set their base data
-        //load player and set their base data
-        //load stock and set their base data
+        Debug.Log("New game");
 
+        GenerateMerchants(gameData);
+        GeneratePlayer(gameData);
+        GenerateMarket(gameData);
+
+        foreach (var merchant in gameData.Merchants)
+        {
+            foreach (var stock in merchant.StockItems)
+            {
+                StockItem get = merchant.StockItems.Where(si => si == stock).FirstOrDefault();
+
+                if (get != null)
+                {
+                    Debug.Log($"Merchant {merchant.MerchantData.Identification} wit item {stock.ItemData.Identification} of amount {stock.Amount} with value {stock.UnitTradePower}");
+                }
+                else
+                {
+                    Debug.Log("Cant find it bitch!");
+                }
+            }
+        }
+        GameDataRepository.AddEntry(gameData);
+        SetGameData(gameData);
+
+
+        StartGame();
     }
 
+    private void GenerateMarket(GameData gameData)
+    {
+
+        Market market = new Market();
+        market.StockItems = new List<StockItem>();
+
+        foreach (var merchant in gameData.Merchants)
+        {
+            foreach (var item in merchant.StockItems)
+            {
+                market.AddStockItem(item);
+            }
+        }
+
+        foreach (var item in gameData.Player.StockItems)
+        {
+            market.AddStockItem(item);
+        }
+
+        gameData.Market = market;
+    }
+
+    private void GeneratePlayer(GameData gameData)
+    {
+        Player player = new Player();
+        ItemData data = ItemRepository.GetEntries()[Random.Range(0, ItemRepository.GetEntries().Count)];
+        float amount = Random.Range(1, 100);
+        float unitTradePower = Random.Range(1, 100);
+        StockItem item = new StockItem
+        (
+            data,
+            ItemQuality.LOW,
+            ItemRarity.LOW,
+            amount,
+            unitTradePower,
+            amount * unitTradePower
+        );
+        player.StockItems = new List<StockItem>();
+        player.AddStockItem(item);
+        gameData.Player = player;
+    }
+
+    private void GenerateMerchants(GameData gameData)
+    {
+        gameData.Merchants = new List<Merchant>();
+
+        //create merchants and their items
+        foreach (var merchantData in MerchantRepository.GetEntries())
+        {
+            Merchant merchant = new Merchant();
+            merchant.MerchantData = merchantData;
+            ItemData data = ItemRepository.GetEntries()[Random.Range(0, ItemRepository.GetEntries().Count)];
+            merchant.StockItems = new List<StockItem>();
+            float amount = Random.Range(1, 100);
+            float unitTradePower = Random.Range(1, 100);
+            StockItem item = new StockItem
+            (
+                data,
+                ItemQuality.LOW,
+                ItemRarity.LOW,
+                amount,
+                unitTradePower,
+                amount * unitTradePower
+            );
+            merchant.AddStockItem(item);
+
+
+
+            merchant.ItemMarketKnowledge = new List<StockItemMarketKnowledge>();
+            merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge
+            (
+                data,
+                ItemQuality.LOW,
+                ItemRarity.LOW,
+                unitTradePower
+            ));
+            gameData.Merchants.Add(merchant);
+        }
+    }
+
+    private void StartGame()
+    {
+        SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
+    }
 
     [ContextMenu("Load game")]
     public void LoadGame()
     {
         SetGameData(GameDataRepository.GetEntry(_gameDataGuid));
-        SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
+        StartGame();
     }
 
     [ContextMenu("Save game")]

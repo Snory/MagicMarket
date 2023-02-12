@@ -16,14 +16,8 @@ public class TradeStockItem : StockItem
     public float MarketUnitPrice;
     public float MarketTotalPrice { get => MerchantUnitPrice * Amount; }
 
-    public TradeStockItem(StockItem item)
+    public TradeStockItem(StockItem item) : base(item)
     {
-        Amount = item.Amount;
-        TotalTradePower = item.TotalTradePower;
-        UnitTradePower = item.UnitTradePower;
-        ItemRarity = item.ItemRarity;
-        ItemQuality = item.ItemQuality;
-        ItemData = item.ItemData;
     }
 }
 
