@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class TradeUI : MonoBehaviour
 {
     private Dictionary<string, Sprite> _sprites;
+    [SerializeField] private TextMeshProUGUI _finishButton;
+   
 
     //this is quite brutal, there should be one place to load all the pictures
     private void Awake()
@@ -25,6 +27,20 @@ public class TradeUI : MonoBehaviour
     public Sprite GetSprite(string name)
     {
         return _sprites[name];
+    }
+
+    public void OnNegotiationPointsChanged(EventArgs args)
+    {
+        NegotiationPointsEventArgs negotiationPointsEventArgs = (NegotiationPointsEventArgs)args;
+
+        if(negotiationPointsEventArgs.NegotiationPoints > 0)
+        {
+            _finishButton.text = "Finish it!";
+        } else
+        {
+            _finishButton.text = "Give up already!";
+        }
+
     }
 
 }

@@ -1772,6 +1772,7 @@ MonoBehaviour:
   _sessionData: {fileID: 11400000, guid: 15069424dbc6332408cab07b55b58d3c, type: 2}
   GoalSelectionInitiated: {fileID: 11400000, guid: ea425d0354c57a04eabd274b66fa88cf, type: 2}
   OfferSelectionInitiated: {fileID: 11400000, guid: a6ffe543873590b498f614d8f6870255, type: 2}
+  NegotiationPointsChanged: {fileID: 11400000, guid: 695a651286370a14a8ddc4e5091f1046, type: 2}
   _merchantExpectedValue: 0
   _playerSelectedValue: 0
 --- !u!114 &647174443
@@ -4252,6 +4253,7 @@ GameObject:
   - component: {fileID: 2140182755}
   - component: {fileID: 2140182753}
   - component: {fileID: 2140182754}
+  - component: {fileID: 2140182757}
   m_Layer: 0
   m_Name: TradeUICanvas
   m_TagString: Untagged
@@ -4353,6 +4355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91816ca6296da04ab6da6cbe89ab09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _finishButton: {fileID: 1378775070}
 --- !u!114 &2140182753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4457,3 +4460,31 @@ MonoBehaviour:
   _tradeStockItemButton: {fileID: 0}
   _amount: {fileID: 945100814}
   _closeAfterConfirmed: 1
+--- !u!114 &2140182757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140182747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642a1c163e11aaa40aece2d45891ac14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 695a651286370a14a8ddc4e5091f1046, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2140182752}
+        m_TargetAssemblyTypeName: TradeUI, Assembly-CSharp
+        m_MethodName: OnNegotiationPointsChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

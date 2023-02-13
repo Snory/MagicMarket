@@ -13,7 +13,7 @@ public class Merchant
     public List<StockItemMarketKnowledge> ItemMarketKnowledge;
     public float CurrentGeneralMarketKnowledge;
 
-    public void AddTransaction(List<TradeStockItem> sold, List<TradeStockItem> bought)
+    public void CloseTrade(List<TradeStockItem> sold, List<TradeStockItem> bought)
     {
 
         float totalSoldPrice = sold.Sum(g => g.MerchantTotalPrice); //this is how merchant valued the stuff he sold
@@ -23,16 +23,7 @@ public class Merchant
         {
             float newValue = (soldItem.MerchantTotalPrice / totalSoldPrice) * totalBoughtPrice;
 
-            UpdateStockItemKnowledge(new StockItem
-            (
-                soldItem.ItemData,
-                soldItem.ItemQuality,
-                soldItem.ItemRarity,
-                soldItem.Amount,
-                newValue,
-                soldItem.Amount * newValue
-            )
-            );
+            UpdateStockItemKnowledge(soldItem, newValue);
 
             RemoveStockItem(new StockItem
             (
@@ -59,7 +50,7 @@ public class Merchant
             );
 
             AddStockItem(newItem);
-            UpdateStockItemKnowledge(newItem);
+            UpdateStockItemKnowledge(boughtItem,newValue);
         }
     }
 
@@ -79,10 +70,31 @@ public class Merchant
         }
     }
 
-    private void UpdateStockItemKnowledge(StockItem stockItem)
+    public void UpdateGeneralMarketKnowledge(List<StockItem> marketStockItems)
+    {
+        float marketValue = 0;
+        float itemMarketKnowledgeTotal = 0;
+        foreach (var itemMarketKnowledge in ItemMarketKnowledge)
+        {
+            itemMarketKnowledgeTotal += itemMarketKnowledge.UnitTradePower;
+            marketValue += marketStockItems.Where(msi => msi == itemMarketKnowledge).First().UnitTradePower;
+        }
+
+        CurrentGeneralMarketKnowledge = (marketValue / itemMarketKnowledgeTotal) > 1 ? ((itemMarketKnowledgeTotal / marketValue)) : ((marketValue / itemMarketKnowledgeTotal));
+    }
+
+    public void UpdateStockItemKnowledge(StockItem stockItem, float value)
     {
         StockItemMarketKnowledge currentKnowledge = GetItemMarketKnowledge(stockItem);
-        currentKnowledge.UnitTradePower = stockItem.UnitTradePower;
+
+        if(currentKnowledge == null)
+        {
+            StockItemMarketKnowledge newKnowledge = new StockItemMarketKnowledge(stockItem.ItemData, stockItem.ItemQuality, stockItem.ItemRarity, value);
+            ItemMarketKnowledge.Add(newKnowledge);
+        } else
+        {
+            currentKnowledge.UnitTradePower = stockItem.UnitTradePower;
+        }       
     }
 
     private void RemoveStockItem(StockItem item)
@@ -98,7 +110,6 @@ public class Merchant
         {
             StockItems.Remove(currentStockItem);
         }
-
     }
 
     public StockItemMarketKnowledge GetItemMarketKnowledge(StockItemBase stockItem)

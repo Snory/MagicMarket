@@ -45,23 +45,6 @@ public class GameManager : MonoBehaviour
         GenerateMerchants(gameData);
         GeneratePlayer(gameData);
         GenerateMarket(gameData);
-
-        foreach (var merchant in gameData.Merchants)
-        {
-            foreach (var stock in merchant.StockItems)
-            {
-                StockItem get = merchant.StockItems.Where(si => si == stock).FirstOrDefault();
-
-                if (get != null)
-                {
-                    Debug.Log($"Merchant {merchant.MerchantData.Identification} wit item {stock.ItemData.Identification} of amount {stock.Amount} with value {stock.UnitTradePower}");
-                }
-                else
-                {
-                    Debug.Log("Cant find it bitch!");
-                }
-            }
-        }
         GameDataRepository.AddEntry(gameData);
         SetGameData(gameData);
 
@@ -86,6 +69,11 @@ public class GameManager : MonoBehaviour
         foreach (var item in gameData.Player.StockItems)
         {
             market.AddStockItem(item);
+        }
+
+        foreach (var merchant in gameData.Merchants)
+        {
+            merchant.UpdateGeneralMarketKnowledge(market.StockItems);
         }
 
         gameData.Market = market;

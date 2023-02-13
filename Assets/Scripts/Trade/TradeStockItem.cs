@@ -14,7 +14,7 @@ public class TradeStockItem : StockItem
     public float PlayerTotalPrice { get => PlayerUnitPrice * Amount; }
 
     public float MarketUnitPrice;
-    public float MarketTotalPrice { get => MerchantUnitPrice * Amount; }
+    public float MarketTotalPrice { get => MarketUnitPrice * Amount; }
 
     public TradeStockItem(StockItem item) : base(item)
     {

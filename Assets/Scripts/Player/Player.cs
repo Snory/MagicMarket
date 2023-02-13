@@ -11,7 +11,7 @@ public class Player
     public List<StockItem> StockItems;
     public int ReputationPoints;
 
-    public void AddTransaction(List<TradeStockItem> sold, List<TradeStockItem> bought)
+    public void CloseTrade(List<TradeStockItem> sold, List<TradeStockItem> bought)
     {
 
         float totalSoldPrice = sold.Sum(g => g.MerchantTotalPrice); //this is how merchant valued the stuff he sold
