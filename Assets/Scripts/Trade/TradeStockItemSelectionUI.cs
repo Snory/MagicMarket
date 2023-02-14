@@ -27,9 +27,6 @@ public class TradeStockItemSelectionUI : MonoBehaviour
     [SerializeField] private TradeStockItemButton _tradeStockItemButton;
     [SerializeField] private TextMeshProUGUI _amount;
 
-    [Header("Behavior")]
-    [SerializeField] private bool _closeAfterConfirmed;
-
     public void OnSelectionInitiated(EventArgs args)
     {
 
@@ -64,14 +61,6 @@ public class TradeStockItemSelectionUI : MonoBehaviour
         _panelGroup.interactable = true;
     }
 
-    public void OnButtonConfirmed()
-    {
-        if (_closeAfterConfirmed)
-        {
-            _stockPanel.SetActive(false);
-        }
-        _confirmedEvent.Raise();
-    }
 
     public void OnSliderAmountChanged()
     {

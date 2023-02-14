@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1052285162
 CanvasRenderer:
@@ -249,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393159358561846468, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3393159358561846468, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3393159358561846468, guid: 82c62add7bbba5e44abafbb2eb26ac58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,11 +363,11 @@ MonoBehaviour:
       ItemRarityProbabilities: []
       ItemQualityProbabilities: []
       SpriteName: 
-    Amount: 0
-    UnitPrice: 0
-    TotalPrice: 0
     ItemQuality: 0
     ItemRarity: 0
+    Amount: 0
+    UnitTradePower: 0
+    TotalTradePower: 0
   _amountSelected: {fileID: 1524716954}
   _amountPanel: {fileID: 1052285159}
   _tradeStockItemChanged: {fileID: 11400000, guid: eb6ae1b29a4379c4b92c09f12e17cea0, type: 2}

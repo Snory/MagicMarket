@@ -24,9 +24,10 @@ public class Trade : MonoBehaviour
 
     private float _goalValue = 0;
     private float _offerValue = 0;
-    private float _marketKnowledge = 0;
+    private float _marketScale = 0;
     private int _karmaPoints = 0;
-    private float _negotiationPoints;
+    private float _negotiationScale;
+    private int _reputationPoints = 0;
 
     [Header("Test variables")]
     [SerializeField] private float _marketOfferValue;
@@ -42,22 +43,33 @@ public class Trade : MonoBehaviour
 
     private void Start()
     {
-        RaiseGoalSelectionInitiated();
-        _negotiationPoints = -1;
+        RaiseTraideInitiated();
         _goalValue = 0;
         _offerValue = 0;
 
-        NegotiationPointsChanged.Raise(new NegotiationPointsEventArgs(_negotiationPoints));
+        CalculateMetrics();
     }
 
     public void OnGoalStockItemChanged(EventArgs args)
     {
         StockItemChanged(args, _goalTradeStockItems);
+        CalculateGoalValue();
+        CalculateMetrics();
     }
 
     public void OnOfferStockItemChanged(EventArgs args)
     {
         StockItemChanged(args, _offerTradeStockItems);
+        CalculateOfferValue();
+        CalculateMetrics();
+    }
+
+    private void CalculateMetrics()
+    {
+        CalculateMarketScale();
+        CalculateNegotiationScale();
+        CalculateKarmaPoints();
+        CalculateReputationPoints();
     }
 
     private void StockItemChanged(EventArgs args, List<TradeStockItem> stockItems)
@@ -76,19 +88,6 @@ public class Trade : MonoBehaviour
         }
 
         stockItems.Add(stockItem);
-    }
-
-    public void OnOfferConfirmed()
-    {
-        CalculateOfferValue();
-        CalculateMarketKnowledge();
-        CalculateNegotiationPoints();
-        CalculateKarmaPoints();
-
-        //send event to UI that negotiation score was updated
-
-        //send event to UI that market knowledge score was updated
-
     }
 
     private void CalculateKarmaPoints()
@@ -120,19 +119,34 @@ public class Trade : MonoBehaviour
         {
             _karmaPoints = -1 * (int)((goalValue - offerValue)/15);
         }
-
-
     }
 
-    private void CalculateNegotiationPoints()
+    private void CalculateReputationPoints()
     {
-        _negotiationPoints = Math.Clamp((_offerValue / _goalValue)-1, -1, 1);
 
-        NegotiationPointsChanged.Raise(new NegotiationPointsEventArgs(_negotiationPoints));
+         if (_offerValue == _goalValue)
+        {
+            _reputationPoints = 0;
+        }
+        else if (_offerValue > _goalValue)
+        {
+            _reputationPoints = (int)((_offerValue - _goalValue) / 15);
+        }
+        else
+        {
+            _reputationPoints = -1 * (int)((_goalValue - _offerValue) / 15);
+        }
+    }
+
+    private void CalculateNegotiationScale()
+    {
+        _negotiationScale = Math.Clamp((_offerValue / _goalValue)-1, -1, 1);
+
+        NegotiationPointsChanged.Raise(new NegotiationPointsEventArgs(_negotiationScale));
 
     }
 
-    private void CalculateMarketKnowledge()
+    private void CalculateMarketScale()
     {
 
         float goalValue = 0;
@@ -151,7 +165,7 @@ public class Trade : MonoBehaviour
         }
         _marketOfferValue = offerValue;
 
-        _marketKnowledge = Math.Clamp((offerValue / goalValue)-1, -1, 1);
+        _marketScale = Math.Clamp((offerValue / goalValue)-1, -1, 1);
     }
 
     public void OnGUI()
@@ -161,19 +175,20 @@ public class Trade : MonoBehaviour
         GUI.Label(new Rect(10, 50, 200, 40), $"Offer value: {_offerValue}", guiStyle);
         GUI.Label(new Rect(10, 90, 200, 40), $"Market goal value: {_marketGoalValue}", guiStyle);
         GUI.Label(new Rect(10, 130, 200, 40), $"Market offer value: {_marketOfferValue}", guiStyle);
-        GUI.Label(new Rect(10, 170, 200, 40), $"Negotiation scale: {Math.Ceiling(_negotiationPoints * 100)} %", guiStyle);
-        GUI.Label(new Rect(10, 210, 200, 40), $"Market scale: {Math.Ceiling(_marketKnowledge * 100)} %", guiStyle);
-        GUI.Label(new Rect(10, 250, 200, 40), $"Karma points: {_karmaPoints}", guiStyle);
+        GUI.Label(new Rect(10, 170, 200, 40), $"Negotiation scale: {Math.Ceiling(_negotiationScale * 100)} %", guiStyle);
+        GUI.Label(new Rect(10, 210, 200, 40), $"Reputation points: {_reputationPoints}", guiStyle);
+        GUI.Label(new Rect(10, 250, 200, 40), $"Market scale: {Math.Ceiling(_marketScale * 100)} %", guiStyle);
+        GUI.Label(new Rect(10, 290, 200, 40), $"Karma points: {_karmaPoints}", guiStyle);
     }
 
     public void OnFinishTrade()
     {
         //based on the negotiation points determine if it was sucessful trade or not
         Player player = _sessionData.Player;
-        player.ReputationPoints += _negotiationPoints >= 0 ? 1 : -1;
+        player.ReputationPoints += _negotiationScale >= 0 ? 1 : -1;
 
 
-        if(_negotiationPoints >= 0)
+        if(_negotiationScale >= 0)
         {
             //update market stock prices
             _gameData.Market.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
@@ -191,13 +206,6 @@ public class Trade : MonoBehaviour
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
     }
 
-
-    public void OnGoalConfirmed()
-    {
-        CalculateGoalValue();
-        OfferSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Player.StockItems));
-
-    }
 
     private void CalculateGoalValue()
     {
@@ -245,10 +253,10 @@ public class Trade : MonoBehaviour
         }
     }
 
-    private void RaiseGoalSelectionInitiated()
+    private void RaiseTraideInitiated()
     {
-        Debug.Log("Goal selection raised");
         GoalSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Merchant.StockItems));
+        OfferSelectionInitiated.Raise(new TradeStockEventArgs(_sessionData.Player.StockItems));
 
     }
 
