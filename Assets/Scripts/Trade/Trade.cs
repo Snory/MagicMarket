@@ -19,6 +19,7 @@ public class Trade : MonoBehaviour
     [SerializeField] private GeneralEvent GoalSelectionInitiated;
     [SerializeField] private GeneralEvent OfferSelectionInitiated;
     [SerializeField] private GeneralEvent NegotiationPointsChanged;
+    [SerializeField] private GeneralEvent PlayerHealthChanged;
 
     private GUIStyle guiStyle = new GUIStyle();
 
@@ -28,6 +29,9 @@ public class Trade : MonoBehaviour
     private int _karmaPoints = 0;
     private float _negotiationScale;
     private int _reputationPoints = 0;
+
+
+    private int _playerHealth;
 
     [Header("Test variables")]
     [SerializeField] private float _marketOfferValue;
@@ -46,6 +50,7 @@ public class Trade : MonoBehaviour
         RaiseTraideInitiated();
         _goalValue = 0;
         _offerValue = 0;
+        _playerHealth = 3;
 
         CalculateMetrics();
     }
@@ -145,7 +150,13 @@ public class Trade : MonoBehaviour
     {
         _negotiationScale = Math.Clamp((_offerValue / _goalValue)-1, -1, 1);
 
-        NegotiationPointsChanged.Raise(new NegotiationPointsEventArgs(_negotiationScale));
+        if(_negotiationScale < 0)
+        {
+            _playerHealth -= 1;
+        }
+
+        PlayerHealthChanged.Raise(new FloatEventArgs(_playerHealth));
+        NegotiationPointsChanged.Raise(new FloatEventArgs(_negotiationScale));
 
     }
 
@@ -182,6 +193,7 @@ public class Trade : MonoBehaviour
         GUI.Label(new Rect(10, 210, 200, 40), $"Reputation points: {_reputationPoints}", guiStyle);
         GUI.Label(new Rect(10, 250, 200, 40), $"Market scale: {Math.Ceiling(_marketScale * 100)} %", guiStyle);
         GUI.Label(new Rect(10, 290, 200, 40), $"Karma points: {_karmaPoints}", guiStyle);
+        GUI.Label(new Rect(10, 330, 200, 40), $"Player health: {_playerHealth}", guiStyle);
     }
 
     public void OnFinishTrade()
@@ -204,9 +216,13 @@ public class Trade : MonoBehaviour
 
         }
 
+        if(_playerHealth > 0)
+        {
+            player.KarmaPoints += _karmaPoints;
+        }
+
         //update stats
         player.ReputationPoints += _reputationPoints;
-        player.KarmaPoints += _karmaPoints;
        
         //update player reputation points and karma points
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);

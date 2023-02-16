@@ -1,11 +1,11 @@
 ﻿using System;
 
-public class NegotiationPointsEventArgs : EventArgs
+public class FloatEventArgs : EventArgs
 {
-    public float NegotiationPoints;
+    public float FloatValue;
 
-    public NegotiationPointsEventArgs(float negotiationPoints)
+    public FloatEventArgs(float floatValue)
     {
-        NegotiationPoints = negotiationPoints;
+        FloatValue = floatValue;
     }
 }

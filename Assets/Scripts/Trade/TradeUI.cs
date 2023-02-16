@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class TradeUI : MonoBehaviour
 {
     private Dictionary<string, Sprite> _sprites;
+    [SerializeField] private GameObject _lostPanel;
+    [SerializeField] private GameObject _masterPanel;
     [SerializeField] private TextMeshProUGUI _finishButton;
    
 
@@ -31,9 +33,9 @@ public class TradeUI : MonoBehaviour
 
     public void OnNegotiationPointsChanged(EventArgs args)
     {
-        NegotiationPointsEventArgs negotiationPointsEventArgs = (NegotiationPointsEventArgs)args;
+        FloatEventArgs negotiationPointsEventArgs = (FloatEventArgs)args;
 
-        if(negotiationPointsEventArgs.NegotiationPoints > 0)
+        if(negotiationPointsEventArgs.FloatValue > 0)
         {
             _finishButton.text = "Finish it!";
         } else
@@ -43,5 +45,15 @@ public class TradeUI : MonoBehaviour
 
     }
 
+    public void OnPlayerHealthChanged(EventArgs args)
+    {
+        FloatEventArgs playerHealthChangedEventArgs = (FloatEventArgs)args;
+
+        if (playerHealthChangedEventArgs.FloatValue <= 0)
+        {
+            _masterPanel.SetActive(false);
+            _lostPanel.SetActive(true);
+        }
+    }
 }
 
