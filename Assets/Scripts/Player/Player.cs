@@ -10,6 +10,9 @@ public class Player
 {
     public List<StockItem> StockItems;
     public int ReputationPoints;
+    public int KarmaPoints;
+    public int TradingPoints;
+    public int TradePower;
 
     public void CloseTrade(List<TradeStockItem> sold, List<TradeStockItem> bought)
     {
@@ -30,6 +33,9 @@ public class Player
                 soldItem.UnitTradePower,
                 soldItem.TotalTradePower
             ));
+
+            TradePower -= (int) soldItem.MarketTotalPrice;
+
         }
 
         foreach (var boughtItem in bought)
@@ -46,6 +52,8 @@ public class Player
             );
 
             AddStockItem(newItem);
+
+            TradePower -= (int)boughtItem.MarketTotalPrice;
         }
     }
 
@@ -77,9 +85,6 @@ public class Player
         {
             StockItems.Remove(currentStockItem);
         }
-
-
     }
-
 }
 

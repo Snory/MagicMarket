@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var merchant in gameData.Merchants)
         {
-            merchant.UpdateGeneralMarketKnowledge(market.StockItems);
+            merchant.UpdateGeneralMarketKnowledge();
         }
 
         gameData.Market = market;
@@ -122,8 +122,6 @@ public class GameManager : MonoBehaviour
                 amount * unitTradePower
             );
             merchant.AddStockItem(item);
-
-
 
             merchant.ItemMarketKnowledge = new List<StockItemMarketKnowledge>();
             merchant.ItemMarketKnowledge.Add(new StockItemMarketKnowledge

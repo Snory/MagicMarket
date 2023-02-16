@@ -26,7 +26,7 @@ public class GameDataJsonConverter : JsonConverter
                         {
                             Identification = (string)m["MerchantData"]["Identification"]
                         },
-                        CurrentGeneralMarketKnowledge = (float)m["CurrentGeneralMarketKnowledge"],
+                        GeneralMarketKnowledge = (float)m["GeneralMarketKnowledge"],
                         StockItems = m["MerchantStockItems"] != null && m["MerchantStockItems"].HasValues
                             ? ((JArray)m["MerchantStockItems"]).Select(s => new StockItem
                             (
@@ -67,7 +67,11 @@ public class GameDataJsonConverter : JsonConverter
                         (float)s["Amount"],
                         (float)s["UnitTradePower"],
                         (float)s["TotalTradePower"]
-                    )).ToList() : new List<StockItem>()
+                    )).ToList() : new List<StockItem>(),
+                TradePower = (int) input["Player"]["TradePower"],
+                ReputationPoints = (int)input["Player"]["ReputationPoints"],
+                KarmaPoints = (int)input["Player"]["KarmaPoints"],
+                TradingPoints = (int)input["Player"]["TradingPoints"]
             },
             Market = new Market
             {
@@ -142,7 +146,7 @@ public class GameDataJsonConverter : JsonConverter
             JObject merchantObject = new JObject();
             merchantObject.Add("MerchantData", merchantData);
             merchantObject.Add("MerchantStockItems", merchantStockitems);
-            merchantObject.Add("CurrentGeneralMarketKnowledge", merchant.CurrentGeneralMarketKnowledge);
+            merchantObject.Add("GeneralMarketKnowledge", merchant.GeneralMarketKnowledge);
             merchantObject.Add("MarketItemMarketKnowledge", merchantMarketItemKnowledge);
             merchants.Add(merchantObject);
         }
@@ -165,6 +169,11 @@ public class GameDataJsonConverter : JsonConverter
             stockItemObject.Add("Rarity", stockItem.ItemRarity.ToString());
             playerStockItems.Add(stockItemObject);
         }
+
+        player.Add("TradePower", input.Player.TradePower);
+        player.Add("TradingPoints", input.Player.TradingPoints);
+        player.Add("ReputationPoints", input.Player.ReputationPoints);
+        player.Add("KarmaPoints", input.Player.KarmaPoints);
 
         player.Add("PlayerStockItems", playerStockItems);
 

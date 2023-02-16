@@ -50,22 +50,27 @@ public class Trade : MonoBehaviour
         CalculateMetrics();
     }
 
+    public void OnEvaluate()
+    {
+        CalculateMetrics();
+    }
+
     public void OnGoalStockItemChanged(EventArgs args)
     {
         StockItemChanged(args, _goalTradeStockItems);
-        CalculateGoalValue();
-        CalculateMetrics();
     }
 
     public void OnOfferStockItemChanged(EventArgs args)
     {
         StockItemChanged(args, _offerTradeStockItems);
-        CalculateOfferValue();
-        CalculateMetrics();
     }
 
     private void CalculateMetrics()
     {
+
+        CalculateGoalValue();
+        CalculateOfferValue();
+
         CalculateMarketScale();
         CalculateNegotiationScale();
         CalculateKarmaPoints();
@@ -77,8 +82,6 @@ public class Trade : MonoBehaviour
         TradeStockItemEventArgs stockItemArgs = args as TradeStockItemEventArgs;
         TradeStockItem stockItem = new TradeStockItem(stockItemArgs.StockItem);
         float marketUnitPrice = _gameData.Market.GetStockItem(stockItem).UnitTradePower;
-
-        Debug.Log($"Market unit price is {marketUnitPrice}");
 
         stockItem.MarketUnitPrice = marketUnitPrice;
 
@@ -185,8 +188,8 @@ public class Trade : MonoBehaviour
     {
         //based on the negotiation points determine if it was sucessful trade or not
         Player player = _sessionData.Player;
-        player.ReputationPoints += _negotiationScale >= 0 ? 1 : -1;
 
+        Merchant merchant = _sessionData.Merchant;
 
         if(_negotiationScale >= 0)
         {
@@ -194,14 +197,17 @@ public class Trade : MonoBehaviour
             _gameData.Market.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
 
             //update merchant stock
-            _sessionData.Merchant.CloseTrade(_goalTradeStockItems, _offerTradeStockItems);
+            merchant.CloseTrade(_goalTradeStockItems, _offerTradeStockItems);
 
             //update player stock
-            _sessionData.Player.CloseTrade(_offerTradeStockItems, _goalTradeStockItems);
+            player.CloseTrade(_offerTradeStockItems, _goalTradeStockItems);
 
         }
-        _sessionData.Merchant.UpdateGeneralMarketKnowledge(_gameData.Market.StockItems);
 
+        //update stats
+        player.ReputationPoints += _reputationPoints;
+        player.KarmaPoints += _karmaPoints;
+       
         //update player reputation points and karma points
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
     }
@@ -236,7 +242,7 @@ public class Trade : MonoBehaviour
             if (itemMarketKnowledge == null)
             {
                 //player is telling me it cost "XX", but merchant market knowledge know the real value!
-                value = Random.Range(offer.UnitTradePower - (offer.UnitTradePower * (1 - merchant.CurrentGeneralMarketKnowledge)), offer.UnitTradePower + (offer.UnitTradePower * (1 - merchant.CurrentGeneralMarketKnowledge)));
+                value = Random.Range(offer.UnitTradePower - (offer.UnitTradePower * (1 - merchant.GeneralMarketKnowledge)), offer.UnitTradePower + (offer.UnitTradePower * (1 - merchant.GeneralMarketKnowledge)));
                 offer.PlayerUnitPrice = offer.UnitTradePower;
 
                 //this will store it right after first value proposal
