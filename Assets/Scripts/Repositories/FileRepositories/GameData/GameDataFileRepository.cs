@@ -12,6 +12,8 @@ public class GameDataFileRepository : FileRepository<GameData>
     {
         GameData gameData = new GameData();
         gameData.Merchants = new List<Merchant>();
+        gameData.Market = new Market();
+        gameData.Player = new Player();
         _entries.Add(gameData);
 
     }

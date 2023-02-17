@@ -9,6 +9,7 @@ using UnityEngine;
 public class Market 
 {
     public List<StockItem> StockItems;
+    public List<StockItemsTransaction> StockItemsTransactions;
 
     /// <summary>
     /// Calculate new market stock value (weighted average) for items in transaction

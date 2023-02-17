@@ -68,7 +68,7 @@ public class GameDataJsonConverter : JsonConverter
                         (float)s["UnitTradePower"],
                         (float)s["TotalTradePower"]
                     )).ToList() : new List<StockItem>(),
-                TradePower = (int) input["Player"]["TradePower"],
+                TradePower = (int)input["Player"]["TradePower"],
                 ReputationPoints = (int)input["Player"]["ReputationPoints"],
                 KarmaPoints = (int)input["Player"]["KarmaPoints"],
                 TradingPoints = (int)input["Player"]["TradingPoints"]
@@ -87,7 +87,41 @@ public class GameDataJsonConverter : JsonConverter
                         (float)s["Amount"],
                         (float)s["UnitTradePower"],
                         (float)s["TotalTradePower"]
-                    )).ToList() : new List<StockItem>()
+                    )).ToList() : new List<StockItem>(),
+                StockItemsTransactions = input["Market"]["StockItemsTransactions"] != null && input["Market"]["StockItemsTransactions"].HasValues
+                    ? ((JArray)input["Market"]["StockItemsTransactions"]).Select(sit => new StockItemsTransaction(
+                        (DateTime)sit["Created"],
+                        new MerchantData
+                        {
+                            Identification = (string)sit["MerchantData"]["Identification"]
+                        },
+                        sit["StockItemsSold"] != null && sit["StockItemsSold"].HasValues ?
+                            ((JArray)sit["StockItemsSold"]).Select(s => new StockItem(
+                                 new ItemData
+                                 {
+                                     Identification = (string)s["ItemData"]["Identification"]
+                                 },
+                                (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                                (float)s["Amount"],
+                                (float)s["UnitTradePower"],
+                                (float)s["TotalTradePower"]
+                            )).ToList() : new List<StockItem>(),
+                    sit["StockItemsSold"] != null && sit["StockItemsSold"].HasValues ?
+                            ((JArray)sit["StockItemsSold"]).Select(s => new StockItem(
+                                 new ItemData
+                                 {
+                                     Identification = (string)s["ItemData"]["Identification"]
+                                 },
+                                (ItemQuality)Enum.Parse(typeof(ItemQuality), (string)s["Quality"]),
+                                (ItemRarity)Enum.Parse(typeof(ItemRarity), (string)s["Rarity"]),
+                                (float)s["Amount"],
+                                (float)s["UnitTradePower"],
+                                (float)s["TotalTradePower"]
+                            )).ToList() : new List<StockItem>(),
+                            (float) sit["KarmaPoints"],
+                            (float) sit["ReputationPoints"]
+                      )).ToList() : new List<StockItemsTransaction>()
             }
         };
 
@@ -198,6 +232,58 @@ public class GameDataJsonConverter : JsonConverter
 
         market.Add("MarketStockItems", marketStockItems);
 
+        JArray marketStockItemTransactions = new JArray();
+
+        foreach (var stockItemTransaction in input.Market.StockItemsTransactions)
+        {
+            JObject stockItemTransactionObject = new JObject();
+            stockItemTransactionObject.Add("Created", stockItemTransaction.Created);
+
+            JObject merchantData = new JObject();
+            merchantData.Add("Identification", stockItemTransaction.MerchantData.Identification);
+            stockItemTransactionObject.Add("MerchantData", merchantData);
+
+            JArray stockItemsSold = new JArray();
+
+            foreach (var stockItemSold in stockItemTransaction.StockItemsSold)
+            {
+                JObject stockitemSoldObject = new JObject();
+                stockitemSoldObject.Add("Amount", stockItemSold.Amount);
+                stockitemSoldObject.Add("UnitTradePower", stockItemSold.UnitTradePower);
+                stockitemSoldObject.Add("TotalTradePower", stockItemSold.TotalTradePower);
+                stockitemSoldObject.Add("Quality", stockItemSold.ItemQuality.ToString());
+                stockitemSoldObject.Add("Rarity", stockItemSold.ItemRarity.ToString());
+
+                stockItemsSold.Add(stockitemSoldObject);
+
+            }
+
+            JArray stockItemsBought = new JArray();
+
+            foreach (var stockItemBought in stockItemTransaction.StockItemsBought)
+            {
+                JObject stockitemBoughtObject = new JObject();
+                stockitemBoughtObject.Add("Amount", stockItemBought.Amount);
+                stockitemBoughtObject.Add("UnitTradePower", stockItemBought.UnitTradePower);
+                stockitemBoughtObject.Add("TotalTradePower", stockItemBought.TotalTradePower);
+                stockitemBoughtObject.Add("Quality", stockItemBought.ItemQuality.ToString());
+                stockitemBoughtObject.Add("Rarity", stockItemBought.ItemRarity.ToString());
+
+                stockItemsBought.Add(stockitemBoughtObject);
+            }
+
+            stockItemTransactionObject.Add("StockItemsSold", stockItemsSold);
+            stockItemTransactionObject.Add("StockItemsBought", stockItemsBought);
+
+            stockItemTransactionObject.Add("KarmaPoints", stockItemTransaction.KarmaPoints);
+            stockItemTransactionObject.Add("ReputationPoints", stockItemTransaction.ReputationPoints);
+
+
+            marketStockItemTransactions.Add(stockItemTransactionObject);
+
+        }
+
+        market.Add("StockItemsTransactions", marketStockItemTransactions);
 
         gameData.Add("Merchants", merchants);
         gameData.Add("Player", player);
