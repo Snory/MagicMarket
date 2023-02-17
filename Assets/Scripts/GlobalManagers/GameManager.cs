@@ -186,6 +186,22 @@ public class GameManager : MonoBehaviour
             stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
         }
 
+        foreach (var transaction in _gameData.Market.StockItemsTransactions)
+        {
+            foreach(var stockItemSold in transaction.StockItemsSold)
+            {
+                stockItemSold.ItemData = ItemRepository.GetEntry(stockItemSold.ItemData.Identification);
+            }
+
+            foreach (var stockItemBought in transaction.StockItemsBought)
+            {
+                stockItemBought.ItemData = ItemRepository.GetEntry(stockItemBought.ItemData.Identification);
+            }
+
+            transaction.MerchantData = MerchantRepository.GetEntry(transaction.MerchantData.Identification);
+        }
+
+
     }
 
 
