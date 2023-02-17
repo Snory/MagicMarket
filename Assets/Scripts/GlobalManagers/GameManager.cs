@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         Market market = new Market();
         market.StockItems = new List<StockItem>();
+        market.StockItemsTransactions = new List<StockItemsTransaction>();
 
         foreach (var merchant in gameData.Merchants)
         {
@@ -77,6 +78,9 @@ public class GameManager : MonoBehaviour
         }
 
         gameData.Market = market;
+
+
+
     }
 
     private void GeneratePlayer(GameData gameData)
