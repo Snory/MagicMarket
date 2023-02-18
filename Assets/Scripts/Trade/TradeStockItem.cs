@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+[Serializable]
 public class TradeStockItem : StockItem
 {
     public float MerchantUnitPrice;
@@ -19,5 +19,13 @@ public class TradeStockItem : StockItem
     public TradeStockItem(StockItem item) : base(item)
     {
     }
+
+    public TradeStockItem(StockItem item, float merchantUnitPrice, float playerUnitPrice, float marketUnitprice) : base(item)
+    {
+        MerchantUnitPrice = merchantUnitPrice;
+        PlayerUnitPrice = playerUnitPrice;
+        MarketUnitPrice = marketUnitprice;
+    }
+
 }
 

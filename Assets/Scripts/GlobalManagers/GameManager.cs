@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         Market market = new Market();
         market.StockItems = new List<StockItem>();
+        market.StockItemsTransactions = new List<StockItemsTransaction>();
 
         foreach (var merchant in gameData.Merchants)
         {
@@ -71,12 +72,10 @@ public class GameManager : MonoBehaviour
             market.AddStockItem(item);
         }
 
-        foreach (var merchant in gameData.Merchants)
-        {
-            merchant.UpdateGeneralMarketKnowledge();
-        }
-
         gameData.Market = market;
+
+
+
     }
 
     private void GeneratePlayer(GameData gameData)
@@ -185,6 +184,22 @@ public class GameManager : MonoBehaviour
         {
             stockitem.ItemData = ItemRepository.GetEntry(stockitem.ItemData.Identification);
         }
+
+        foreach (var transaction in _gameData.Market.StockItemsTransactions)
+        {
+            foreach(var stockItemSold in transaction.StockItemsSold)
+            {
+                stockItemSold.ItemData = ItemRepository.GetEntry(stockItemSold.ItemData.Identification);
+            }
+
+            foreach (var stockItemBought in transaction.StockItemsBought)
+            {
+                stockItemBought.ItemData = ItemRepository.GetEntry(stockItemBought.ItemData.Identification);
+            }
+
+            transaction.MerchantData = MerchantRepository.GetEntry(transaction.MerchantData.Identification);
+        }
+
 
     }
 

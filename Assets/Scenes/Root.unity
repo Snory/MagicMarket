@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7409782a84718f542abc7eb32a2ca129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameDataGuid: 36ad2111-2df2-4330-9a71-2f91f12c17e4
+  _gameDataGuid: f8f231e4-e99e-43da-8490-660bdc19e1f0
   _gameData:
     Identification: 06337a46-128b-4d43-9ac9-f83112bd568c
     Name: MyFirstGame!
@@ -487,7 +487,7 @@ MonoBehaviour:
         UnitTradePower: 0
         TotalTradePower: 0
       ItemMarketKnowledge: []
-      CurrentGeneralMarketKnowledge: 0
+      TradePower: 0
     - MerchantData:
         Identification: 2b763e3a-0e0b-47b8-9fb3-5747d9711295
         Name: RobinTheWeaver
@@ -514,7 +514,7 @@ MonoBehaviour:
         UnitTradePower: 0
         TotalTradePower: 0
       ItemMarketKnowledge: []
-      CurrentGeneralMarketKnowledge: 0
+      TradePower: 0
     Player:
       StockItems:
       - ItemData:
@@ -534,9 +534,14 @@ MonoBehaviour:
         Amount: 10
         UnitTradePower: 0
         TotalTradePower: 0
+      ItemMarketKnowledge: []
       ReputationPoints: 0
+      KarmaPoints: 0
+      TradingPoints: 0
+      TradePower: 0
     Market:
       StockItems: []
+      StockItemsTransactions: []
   _gameDataSent: {fileID: 11400000, guid: bbe3d35b818aa694e8028ef5f965cbec, type: 2}
   GameDataRepository: {fileID: 11400000, guid: 4016ab3f73ef6c14a9af3b38c365a8f3, type: 2}
   MerchantRepository: {fileID: 11400000, guid: 66e180bf097d9ae41801df90da5d7909, type: 2}

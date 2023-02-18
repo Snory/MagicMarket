@@ -12,7 +12,793 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0180805b037804483e44d0a88d1869, type: 3}
   m_Name: GameDataRepository
   m_EditorClassIdentifier: 
-  _entries: []
+  _entries:
+  - Identification: f8f231e4-e99e-43da-8490-660bdc19e1f0
+    Name: NewGame_1
+    Merchants:
+    - MerchantData:
+        Identification: 87e8caa5-6c47-4b4c-8887-87b5c55e5c5a
+        Name: GeminiTheEnchanter
+        Description: Twin enchanters with a flair for the mystical
+        SpriteName: merchant1
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: Wolf's Fang
+          Description: The fang of a powerful wolf, used in many spells and potions
+            to bring strength and power to the caster.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          SpriteName: Icons_273
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 18
+        UnitTradePower: 34
+        TotalTradePower: 612
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: Wolf's Fang
+          Description: The fang of a powerful wolf, used in many spells and potions
+            to bring strength and power to the caster.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          SpriteName: Icons_273
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 34
+      TradePower: 0
+    - MerchantData:
+        Identification: 14a9e66b-932b-4f74-8816-ab92a15ed7f9
+        Name: TheOracle
+        Description: Possessing ancient knowledge, the oracle can help you see into
+          the future
+        SpriteName: merchant2
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 94
+        UnitTradePower: 34
+        TotalTradePower: 3196
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 34
+      TradePower: 0
+    - MerchantData:
+        Identification: 05ffb0e6-17c8-4599-9c48-b67f23b10c17
+        Name: ZephyrTheWindMage
+        Description: Master of the winds, Zephyr can help you harness their power
+        SpriteName: merchant3
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+          Name: Phoenix Feather
+          Description: The feather of a mythical bird said to be able to control
+            fire.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.8
+          - Rarity: 1
+            Probability: 0.15
+          - Rarity: 2
+            Probability: 0.05
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.8
+          - Quality: 1
+            Probability: 0.15
+          - Quality: 2
+            Probability: 0.05
+          SpriteName: Icons_274
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 22
+        UnitTradePower: 57
+        TotalTradePower: 1254
+      - ItemData:
+          Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+          Name: Celestial Dust
+          Description: A rare and powerful ingredient that comes from the ashes of
+            fallen stars. It is said to grant immense power to those who use it in
+            their spells and rituals.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 2
+            Probability: 0.3
+          - Rarity: 1
+            Probability: 0.5
+          - Rarity: 0
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 2
+            Probability: 0.3
+          - Quality: 1
+            Probability: 0.5
+          - Quality: 0
+            Probability: 0.2
+          SpriteName: Icons_245
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 10
+        UnitTradePower: 49.848633
+        TotalTradePower: 498.48633
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+          Name: Phoenix Feather
+          Description: The feather of a mythical bird said to be able to control
+            fire.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.8
+          - Rarity: 1
+            Probability: 0.15
+          - Rarity: 2
+            Probability: 0.05
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.8
+          - Quality: 1
+            Probability: 0.15
+          - Quality: 2
+            Probability: 0.05
+          SpriteName: Icons_274
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 57
+      - ItemData:
+          Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+          Name: Celestial Dust
+          Description: A rare and powerful ingredient that comes from the ashes of
+            fallen stars. It is said to grant immense power to those who use it in
+            their spells and rituals.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 2
+            Probability: 0.3
+          - Rarity: 1
+            Probability: 0.5
+          - Rarity: 0
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 2
+            Probability: 0.3
+          - Quality: 1
+            Probability: 0.5
+          - Quality: 0
+            Probability: 0.2
+          SpriteName: Icons_245
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 75.46847
+      TradePower: -18
+    - MerchantData:
+        Identification: b3c3ab14-e0f2-4b11-aee6-9fa25ddc1f7f
+        Name: NirvanaTheAlchemist
+        Description: With her mastery of alchemy, Nirvana can turn base materials
+          into gold
+        SpriteName: merchant4
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 98
+        UnitTradePower: 19
+        TotalTradePower: 1862
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 19
+      TradePower: 0
+    - MerchantData:
+        Identification: a68a9c0f-ed67-40a9-b07f-03ece096f159
+        Name: MystiqueTheIllusionist
+        Description: With her mastery of illusion, Mystique can make the impossible
+          seem possible
+        SpriteName: merchant5
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 3
+        UnitTradePower: 88
+        TotalTradePower: 264
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 88
+      TradePower: 0
+    - MerchantData:
+        Identification: c7d89eea-54af-4dce-afd3-ed3f6b24a10b
+        Name: LunarTheMoonWitch
+        Description: With her mastery of lunar magic, Lunar can help you tap into
+          the power of the moon
+        SpriteName: merchant6
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 18
+        UnitTradePower: 47
+        TotalTradePower: 846
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 47
+      TradePower: 0
+    - MerchantData:
+        Identification: f15e33f8-d97e-46f7-9dc2-ccb8bc2b3f47
+        Name: ArcadiaTheNatureMage
+        Description: With her mastery of nature magic, Arcadia can help you harness
+          the power of the earth
+        SpriteName: merchant7
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 23
+        UnitTradePower: 95
+        TotalTradePower: 2185
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 95
+      TradePower: 0
+    - MerchantData:
+        Identification: e0a1b7a2-4c4e-4b5f-9184-59c1d639b7e7
+        Name: AuroraTheLightMage
+        Description: With her mastery of light magic, Aurora can help you harness
+          the power of the sun
+        SpriteName: merchant8
+        GeneralMarketKnowledge: 0
+        ItemsInterest: []
+      StockItems:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 16
+        UnitTradePower: 45
+        TotalTradePower: 720
+      ItemMarketKnowledge:
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        UnitTradePower: 45
+      TradePower: 0
+    Player:
+      StockItems:
+      - ItemData:
+          Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+          Name: Celestial Dust
+          Description: A rare and powerful ingredient that comes from the ashes of
+            fallen stars. It is said to grant immense power to those who use it in
+            their spells and rituals.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 2
+            Probability: 0.3
+          - Rarity: 1
+            Probability: 0.5
+          - Rarity: 0
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 2
+            Probability: 0.3
+          - Quality: 1
+            Probability: 0.5
+          - Quality: 0
+            Probability: 0.2
+          SpriteName: Icons_245
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 37
+        UnitTradePower: 66
+        TotalTradePower: 2442
+      - ItemData:
+          Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+          Name: Phoenix Feather
+          Description: The feather of a mythical bird said to be able to control
+            fire.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.8
+          - Rarity: 1
+            Probability: 0.15
+          - Rarity: 2
+            Probability: 0.05
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.8
+          - Quality: 1
+            Probability: 0.15
+          - Quality: 2
+            Probability: 0.05
+          SpriteName: Icons_274
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 1
+        UnitTradePower: 754.6847
+        TotalTradePower: 754.6847
+      ItemMarketKnowledge: []
+      ReputationPoints: 46
+      KarmaPoints: 40
+      TradingPoints: 0
+      TradePower: 18
+    Market:
+      StockItems:
+      - ItemData:
+          Identification: 7aece16c-6de2-4ebd-b4cc-9bf4e4e44d9a
+          Name: Wolf's Fang
+          Description: The fang of a powerful wolf, used in many spells and potions
+            to bring strength and power to the caster.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          SpriteName: Icons_273
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 18
+        UnitTradePower: 34
+        TotalTradePower: 612
+      - ItemData:
+          Identification: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+          Name: Eye of newt
+          Description: A small, beady eye that is commonly used in potions and spells
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.7
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.1
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.7
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.1
+          SpriteName: Icons_12
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 113
+        UnitTradePower: 36.99115
+        TotalTradePower: 4180
+      - ItemData:
+          Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+          Name: Phoenix Feather
+          Description: The feather of a mythical bird said to be able to control
+            fire.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.8
+          - Rarity: 1
+            Probability: 0.15
+          - Rarity: 2
+            Probability: 0.05
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.8
+          - Quality: 1
+            Probability: 0.15
+          - Quality: 2
+            Probability: 0.05
+          SpriteName: Icons_274
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 24
+        UnitTradePower: 82.125
+        TotalTradePower: 1971
+      - ItemData:
+          Identification: 7p6o5n-4m3l2k-1j0i-9h8g-7f6e5d4c3b2a
+          Name: Dragon's Breath
+          Description: A rare ingredient that is said to have come from the breath
+            of a dragon. It is said to add power to spells and potions
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 0
+            Probability: 0.1
+          - Rarity: 1
+            Probability: 0.2
+          - Rarity: 2
+            Probability: 0.7
+          ItemQualityProbabilities:
+          - Quality: 0
+            Probability: 0.1
+          - Quality: 1
+            Probability: 0.2
+          - Quality: 2
+            Probability: 0.7
+          SpriteName: Icons_1
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 139
+        UnitTradePower: 35.20144
+        TotalTradePower: 4893
+      - ItemData:
+          Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+          Name: Celestial Dust
+          Description: A rare and powerful ingredient that comes from the ashes of
+            fallen stars. It is said to grant immense power to those who use it in
+            their spells and rituals.
+          Type: 1
+          ItemRarityProbabilities:
+          - Rarity: 2
+            Probability: 0.3
+          - Rarity: 1
+            Probability: 0.5
+          - Rarity: 0
+            Probability: 0.2
+          ItemQualityProbabilities:
+          - Quality: 2
+            Probability: 0.3
+          - Quality: 1
+            Probability: 0.5
+          - Quality: 0
+            Probability: 0.2
+          SpriteName: Icons_245
+        ItemQuality: 0
+        ItemRarity: 0
+        Amount: 57
+        UnitTradePower: 64.42105
+        TotalTradePower: 3672
+      StockItemsTransactions:
+      - MerchantData:
+          Identification: 05ffb0e6-17c8-4599-9c48-b67f23b10c17
+          Name: ZephyrTheWindMage
+          Description: Master of the winds, Zephyr can help you harness their power
+          SpriteName: merchant3
+          GeneralMarketKnowledge: 0
+          ItemsInterest: []
+        StockItemsSold:
+        - ItemData:
+            Identification: fa1d6b9a-6790-4ed1-8a08-6d8052c60a75
+            Name: Celestial Dust
+            Description: A rare and powerful ingredient that comes from the ashes
+              of fallen stars. It is said to grant immense power to those who use
+              it in their spells and rituals.
+            Type: 1
+            ItemRarityProbabilities:
+            - Rarity: 2
+              Probability: 0.3
+            - Rarity: 1
+              Probability: 0.5
+            - Rarity: 0
+              Probability: 0.2
+            ItemQualityProbabilities:
+            - Quality: 2
+              Probability: 0.3
+            - Quality: 1
+              Probability: 0.5
+            - Quality: 0
+              Probability: 0.2
+            SpriteName: Icons_245
+          ItemQuality: 0
+          ItemRarity: 0
+          Amount: 10
+          UnitTradePower: 66
+          TotalTradePower: 660
+          MerchantUnitPrice: 75.46847
+          PlayerUnitPrice: 66
+          MarketUnitPrice: 66
+        StockItemsBought:
+        - ItemData:
+            Identification: 8cf24f12-badd-4fdd-9ade-9bcd33e84f91
+            Name: Phoenix Feather
+            Description: The feather of a mythical bird said to be able to control
+              fire.
+            Type: 1
+            ItemRarityProbabilities:
+            - Rarity: 0
+              Probability: 0.8
+            - Rarity: 1
+              Probability: 0.15
+            - Rarity: 2
+              Probability: 0.05
+            ItemQualityProbabilities:
+            - Quality: 0
+              Probability: 0.8
+            - Quality: 1
+              Probability: 0.15
+            - Quality: 2
+              Probability: 0.05
+            SpriteName: Icons_274
+          ItemQuality: 0
+          ItemRarity: 0
+          Amount: 1
+          UnitTradePower: 57
+          TotalTradePower: 57
+          MerchantUnitPrice: 57
+          PlayerUnitPrice: 0
+          MarketUnitPrice: 57
+        KarmaPoints: 40
+        ReputationPoints: 46
   _repositoryDataPath: C:/Users/robti/AppData/LocalLow/DefaultCompany/MagicMarket
   _repositoryFolderPath:
   - Games
