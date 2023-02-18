@@ -12,14 +12,14 @@ public class StockItemsTransaction
     //merchantData
     public MerchantData MerchantData;
     //stock item koupený
-    public List<StockItem> StockItemsSold;
-    public List<StockItem> StockItemsBought;
+    public List<TradeStockItem> StockItemsSold;
+    public List<TradeStockItem> StockItemsBought;
     //karma points
     public float KarmaPoints;
     //reputation points
     public float ReputationPoints;
 
-    public StockItemsTransaction(DateTime created, MerchantData merchantData, List<StockItem> stockItemsSold, List<StockItem> stockItemsBought, float karmaPoints, float reputationPoints)
+    public StockItemsTransaction(DateTime created, MerchantData merchantData, List<TradeStockItem> stockItemsSold, List<TradeStockItem> stockItemsBought, float karmaPoints, float reputationPoints)
     {
         Created = created;
         MerchantData = merchantData;

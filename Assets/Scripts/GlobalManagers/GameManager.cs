@@ -72,11 +72,6 @@ public class GameManager : MonoBehaviour
             market.AddStockItem(item);
         }
 
-        foreach (var merchant in gameData.Merchants)
-        {
-            merchant.UpdateGeneralMarketKnowledge();
-        }
-
         gameData.Market = market;
 
 

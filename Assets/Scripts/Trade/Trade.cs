@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -51,7 +52,6 @@ public class Trade : MonoBehaviour
         _goalValue = 0;
         _offerValue = 0;
         _playerHealth = 3;
-
         CalculateMetrics();
     }
 
@@ -196,6 +196,63 @@ public class Trade : MonoBehaviour
         GUI.Label(new Rect(10, 330, 200, 40), $"Player health: {_playerHealth}", guiStyle);
     }
 
+
+    public void CloseTrade(IStockable stockable, List<TradeStockItem> sold, List<TradeStockItem> bought)
+    {
+        float totalSoldPrice = sold.Sum(g => g.MerchantTotalPrice); //this is how merchant valued the stuff he sold
+        float totalBoughtPrice = bought.Sum(o => o.MerchantTotalPrice); //this is how merchant valued the stuff he bought
+        float marketUnitPrice = 0;
+
+        IMarketKnowledable marketKnowledable = stockable as IMarketKnowledable;
+
+        foreach (var soldItem in sold) //remove from stock excatly what i sold
+        {
+            float newValue = (soldItem.MerchantTotalPrice / totalSoldPrice) * totalBoughtPrice;
+
+            if(marketKnowledable != null)
+            {
+                marketKnowledable.UpdateStockItemKnowledge(soldItem, newValue);
+            }
+
+
+            stockable.RemoveStockItem(new StockItem
+            (
+                soldItem.ItemData,
+                soldItem.ItemQuality,
+                soldItem.ItemRarity,
+                soldItem.Amount,
+                soldItem.UnitTradePower,
+                soldItem.TotalTradePower
+            ));
+
+
+            marketUnitPrice = _gameData.Market.GetStockItem(soldItem).UnitTradePower; //get current market price
+
+            stockable.UpdateTadePower(-1* (int)marketUnitPrice);
+
+        }
+
+        foreach (var boughtItem in bought)
+        {
+            float newValue = (boughtItem.TotalTradePower / totalBoughtPrice) * totalSoldPrice;
+            StockItem newItem = new StockItem
+            (
+                boughtItem.ItemData,
+                boughtItem.ItemQuality,
+                boughtItem.ItemRarity,
+                boughtItem.Amount,
+                newValue,
+                boughtItem.Amount * newValue
+            );
+
+            stockable.AddStockItem(newItem);
+
+            marketUnitPrice = _gameData.Market.GetStockItem(boughtItem).UnitTradePower; //get current market price
+
+            stockable.UpdateTadePower((int)marketUnitPrice);
+        }
+    }
+
     public void OnFinishTrade()
     {
         //based on the negotiation points determine if it was sucessful trade or not
@@ -206,13 +263,13 @@ public class Trade : MonoBehaviour
         if(_negotiationScale >= 0)
         {
             //update market stock prices
-            _gameData.Market.AddTransaction(_goalTradeStockItems, _offerTradeStockItems);
-
+            _gameData.Market.CloseTrade(_goalTradeStockItems, _offerTradeStockItems);
+            _gameData.Market.AddTransaction(merchant, _goalTradeStockItems, _offerTradeStockItems, _karmaPoints, _reputationPoints);
             //update merchant stock
-            merchant.CloseTrade(_goalTradeStockItems, _offerTradeStockItems);
+            CloseTrade(merchant, _goalTradeStockItems, _offerTradeStockItems);
 
             //update player stock
-            player.CloseTrade(_offerTradeStockItems, _goalTradeStockItems);
+            CloseTrade(player,_offerTradeStockItems, _goalTradeStockItems);
 
         }
 
@@ -228,10 +285,8 @@ public class Trade : MonoBehaviour
         SceneManager.LoadScene("MarketSelection", LoadSceneMode.Single);
     }
 
-
     private void CalculateGoalValue()
     {
-
         Merchant merchant = _sessionData.Merchant;
         _goalValue = 0;
 
@@ -258,7 +313,7 @@ public class Trade : MonoBehaviour
             if (itemMarketKnowledge == null)
             {
                 //player is telling me it cost "XX", but merchant market knowledge know the real value!
-                value = Random.Range(offer.UnitTradePower - (offer.UnitTradePower * (1 - merchant.GeneralMarketKnowledge)), offer.UnitTradePower + (offer.UnitTradePower * (1 - merchant.GeneralMarketKnowledge)));
+                value = Random.Range(offer.UnitTradePower - (offer.UnitTradePower * (1 - 0.5f)), offer.UnitTradePower + (offer.UnitTradePower * (1 - 0.5f)));
                 offer.PlayerUnitPrice = offer.UnitTradePower;
 
                 //this will store it right after first value proposal

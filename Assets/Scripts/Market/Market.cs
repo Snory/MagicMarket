@@ -6,7 +6,7 @@ using UnityEngine;
 
 [Serializable]
 
-public class Market 
+public class Market
 {
     public List<StockItem> StockItems;
     public List<StockItemsTransaction> StockItemsTransactions;
@@ -16,7 +16,7 @@ public class Market
     /// </summary>
     /// <param name="goals"></param>
     /// <param name="offers"></param>
-    public void AddTransaction(List<TradeStockItem> goals, List<TradeStockItem> offers)
+    public void CloseTrade(List<TradeStockItem> goals, List<TradeStockItem> offers)
     {
 
         float totalGoalTradeMarketPrice = goals.Sum(g => g.MarketTotalPrice);
@@ -38,7 +38,7 @@ public class Market
                 newValue,
                 goal.Amount * newValue
             ));
-           
+
         }
 
         foreach (var offer in offers)
@@ -58,17 +58,29 @@ public class Market
                 offer.Amount * newValue
             ));
         }
+    }
 
+    public void AddTransaction(Merchant merchant, List<TradeStockItem> bought, List<TradeStockItem> sold, int karmaPoints, int reputationPoints)
+    {
+        StockItemsTransactions.Add(new StockItemsTransaction(
+            DateTime.Now,
+            merchant.MerchantData,
+            sold,
+            bought,
+            karmaPoints,
+            reputationPoints
+        ));
     }
 
     public void AddStockItem(StockItem item)
     {
         StockItem currentStockItem = StockItems.Where(i => i == item).FirstOrDefault();
 
-        if(currentStockItem == null)
+        if (currentStockItem == null)
         {
             StockItems.Add(new StockItem(item));
-        } else
+        }
+        else
         {
             currentStockItem.TotalTradePower += item.TotalTradePower;
             currentStockItem.Amount += item.Amount;
@@ -82,5 +94,5 @@ public class Market
     }
 
 
-   
+
 }
